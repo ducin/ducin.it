@@ -1,0 +1,37 @@
+{
+  "name": "ducin.it",
+  "version": "0.2.0",
+  "homepage": "http://ducin.it",
+  "description": "Tomasz Ducin homepage",
+  "main": "index.html",
+  "authors": [
+    "Tomasz Ducin <tomasz.ducin@gmail.com>"
+  ],
+  "scripts": {
+    "start": "gulp"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ducin/ducin.it.git"
+  },
+  "bugs": {
+    "url": "https://github.com/ducin/ducin.it/issues"
+  },
+  "keywords": [
+    "homepage"
+  ],
+  "private": true,
+  "dependencies": {
+    "angular": "^1.5.8",
+    "angular-bootstrap": "^0.12.2",
+    "angular-translate": "^2.11.1",
+    "bootstrap": "^3.3.7",
+    "font-awesome": "^4.6.3"
+  },
+  "devDependencies": {
+    "gulp": "^3.9.1",
+    "gulp-clean": "^0.3.2",
+    "gulp-clean-css": "^2.0.12",
+    "gulp-concat": "^2.6.0"
+  }
+}

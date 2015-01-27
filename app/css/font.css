@@ -1,0 +1,16 @@
+@font-face {
+    font-family: 'Dream Orphans';
+    src: url('/fonts/dream-orphans.ttf');
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Dream Orphans';
+    src: url('/fonts/dream-orphans-it.ttf');
+    font-style: italic;
+}
+
+@font-face {
+    font-family: 'Segoe Print';
+    src: url('/fonts/segoe-print.ttf');
+}
