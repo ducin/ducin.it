@@ -1,6 +1,8 @@
 var app = angular.module('HomepageApp', ['ui.bootstrap', 'pascalprecht.translate']);
 
 app.config(['$translateProvider', function ($translateProvider) {
+    $translateProvider.useSanitizeValueStrategy('escape');
+
     $translateProvider.translations('en', {
         CONTACT: 'Contact',
         ABOUT_ME: 'About me',
