@@ -1,6 +1,7 @@
 var gulp = require('gulp');
 var concat = require('gulp-concat');
 var clean = require('gulp-clean');
+var uglify = require('gulp-uglify');
 var cleanCSS = require('gulp-clean-css');
 
 var cfg = {
@@ -32,26 +33,25 @@ gulp.task('clean', function () {
     .pipe(clean());
 });
 
-gulp.task('vendor-js', function() {
+gulp.task('vendor-js', ['clean'], function() {
   return gulp.src(cfg.js.vendor)
     .pipe(concat('vendor.js'))
-    .pipe(gulp.dest('./dist/'));
-});
+    .pipe(gulp.dest('./dist/'));});
 
-gulp.task('app-js', function() {
+gulp.task('app-js', ['clean'], function() {
   return gulp.src(cfg.js.app)
-    .pipe(concat('app.js'))
+    .pipe(uglify('app.js'))
     .pipe(gulp.dest('./dist/'));
 });
 
-gulp.task('vendor-css', function() {
+gulp.task('vendor-css', ['clean'], function() {
   return gulp.src(cfg.css.vendor)
     .pipe(cleanCSS({compatibility: 'ie8'}))
     .pipe(concat('vendor.css'))
     .pipe(gulp.dest('./dist/'));
 });
 
-gulp.task('app-css', function() {
+gulp.task('app-css', ['clean'], function() {
   return gulp.src(cfg.css.app)
     .pipe(cleanCSS({compatibility: 'ie8'}))
     .pipe(concat('app.css'))
@@ -64,7 +64,6 @@ gulp.task('fonts', function() {
 });
 
 gulp.task('build', [
-  'clean',
   'vendor-js',
   'app-js',
   'vendor-css',

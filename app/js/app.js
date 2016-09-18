@@ -1,6 +1,6 @@
 var app = angular.module('HomepageApp', ['ui.bootstrap', 'pascalprecht.translate']);
 
-app.config(function ($translateProvider) {
+app.config(['$translateProvider', function ($translateProvider) {
     $translateProvider.translations('en', {
         CONTACT: 'Contact',
         ABOUT_ME: 'About me',
@@ -42,7 +42,7 @@ app.config(function ($translateProvider) {
         AT: 'w'
     });
     $translateProvider.preferredLanguage('en');
-});
+}]);
 
 app.controller('HomepageCtrl', ['$scope', '$translate', function ($scope, $translate) {
         $scope.languages = [
@@ -109,16 +109,16 @@ app.controller('HomepageCtrl', ['$scope', '$translate', function ($scope, $trans
         $translate.use('en');
     }]);
 
-app.controller('ModalContactCtrl', function ($scope, $modal) {
+app.controller('ModalContactCtrl', ['$scope', '$modal', function ($scope, $modal) {
     $scope.open = function () {
         $modal.open({
             templateUrl: 'templates/modalContact.html',
             controller: 'ModalInstanceCtrl'
         });
     };
-});
+}]);
 
-app.controller('ModalInstanceCtrl', function ($scope, $modalInstance) {
+app.controller('ModalInstanceCtrl', ['$scope', '$modalInstance', function ($scope, $modalInstance) {
     $scope.ok = function () {
         $modalInstance.close(true);
     };
@@ -126,4 +126,4 @@ app.controller('ModalInstanceCtrl', function ($scope, $modalInstance) {
     $scope.cancel = function () {
         $modalInstance.dismiss('cancel');
     };
-});
+}]);
