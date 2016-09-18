@@ -44,70 +44,74 @@ app.config(['$translateProvider', function ($translateProvider) {
     $translateProvider.preferredLanguage('en');
 }]);
 
-app.controller('HomepageCtrl', ['$scope', '$translate', function ($scope, $translate) {
-        $scope.languages = [
-            {name: 'English', code: 'en'},
-            {name: 'Polski', code: 'pl'}
-        ];
+app.constant('slides', [{
+    title: 'Conferences',
+    i18n: 'CONFERENCES',
+    imgPath: 'img/carousel/enterjs-2.jpg'
+}, {
+    title: 'Meetups',
+    i18n: 'MEETUPS',
+    imgPath: 'img/carousel/warsawjs.no10-2.jpg'
+}, {
+    title: 'Trainings',
+    i18n: 'TRAININGS',
+    imgPath: 'img/carousel/fullstack-2.jpg'
+}, {
+    title: 'Workshops',
+    i18n: 'WORKSHOPS',
+    imgPath: 'img/carousel/django-carrots-2.jpg'
+}, {
+    title: 'Events',
+    i18n: 'EVENTS',
+    imgPath: 'img/carousel/pywawsummit-2.jpg'
+}, {
+    title: 'Open Source',
+    i18n: 'OPEN_SOURCE',
+    imgPath: 'img/carousel/json-schema-faker.jpg'
+}, {
+    title: 'Publications',
+    i18n: 'PUBLICATIONS',
+    imgPath: 'img/carousel/publications-2.jpg'
+}]);
 
-        $scope.setLanguage = function (code) {
-            $translate.use(code);
-        };
+app.constant('communities', [{
+    name: 'PyWaw',
+    link: 'http://pywaw.org'
+}, {
+    name: 'PyWaw Summit',
+    link: 'http://summit.pywaw.org'
+}, {
+    name: 'Codepot',
+    link: 'http://codepot.pl'
+}, {
+    name: 'Warsjawa',
+    link: 'http://warsjawa.pl'
+}, {
+    name: 'WarsawJS',
+    link: 'http://warsawjs.com'
+}, {
+    name: 'meet.js',
+    link: 'https://www.facebook.com/meetjspl'
+}]);
 
-        $scope.slides = [{
-                title: 'Conferences',
-                i18n: 'CONFERENCES',
-                imgPath: 'img/carousel/enterjs-2.jpg'
-            }, {
-                title: 'Meetups',
-                i18n: 'MEETUPS',
-                imgPath: 'img/carousel/warsawjs.no10-2.jpg'
-            }, {
-                title: 'Trainings',
-                i18n: 'TRAININGS',
-                imgPath: 'img/carousel/fullstack-2.jpg'
-            }, {
-                title: 'Workshops',
-                i18n: 'WORKSHOPS',
-                imgPath: 'img/carousel/django-carrots-2.jpg'
-            }, {
-                title: 'Events',
-                i18n: 'EVENTS',
-                imgPath: 'img/carousel/pywawsummit-2.jpg'
-            }, {
-                title: 'Open Source',
-                i18n: 'OPEN_SOURCE',
-                imgPath: 'img/carousel/json-schema-faker.jpg'
-            }, {
-                title: 'Publications',
-                i18n: 'PUBLICATIONS',
-                imgPath: 'img/carousel/publications-2.jpg'
-            }];
+app.controller('HomepageCtrl', ['$scope', '$translate', 'slides', 'communities', function ($scope, $translate, slides, communities) {
+    $scope.languages = [
+        {name: 'English', code: 'en'},
+        {name: 'Polski', code: 'pl'}
+    ];
 
-        $scope.slidesInterval = 3000;
+    $scope.setLanguage = function (code) {
+        $translate.use(code);
+    };
 
-        $scope.communities = [{
-            name: 'PyWaw',
-            link: 'http://pywaw.org'
-        }, {
-            name: 'PyWaw Summit',
-            link: 'http://summit.pywaw.org'
-        }, {
-            name: 'Codepot',
-            link: 'http://codepot.pl'
-        }, {
-            name: 'Warsjawa',
-            link: 'http://warsjawa.pl'
-        }, {
-            name: 'WarsawJS',
-            link: 'http://warsawjs.com'
-        }, {
-            name: 'meet.js',
-            link: 'https://www.facebook.com/meetjspl'
-        }];
+    $scope.slides = slides;
 
-        $translate.use('en');
-    }]);
+    $scope.slidesInterval = 3000;
+
+    $scope.communities = communities;
+
+    $translate.use('en');
+}]);
 
 app.controller('ModalContactCtrl', ['$scope', '$modal', function ($scope, $modal) {
     $scope.open = function () {
