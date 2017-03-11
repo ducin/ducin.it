@@ -1,6 +1,7 @@
 {
+  "private": true,
   "name": "ducin.it",
-  "version": "0.2.0",
+  "version": "0.2.1",
   "homepage": "http://ducin.it",
   "description": "Tomasz Ducin homepage",
   "main": "index.html",
@@ -10,29 +11,22 @@
   "scripts": {
     "start": "gulp"
   },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/ducin/ducin.it.git"
-  },
-  "bugs": {
-    "url": "https://github.com/ducin/ducin.it/issues"
-  },
   "keywords": [
     "homepage"
   ],
-  "private": true,
   "dependencies": {
-    "angular": "^1.5.8",
+    "angular": "^1.6.3",
     "angular-bootstrap": "^0.12.2",
-    "angular-translate": "^2.11.1",
+    "angular-translate": "^2.15.1",
+    "angular-ui-router": "^0.4.2",
     "bootstrap": "^3.3.7",
-    "font-awesome": "^4.6.3"
+    "font-awesome": "^4.7.0"
   },
   "devDependencies": {
     "gulp": "^3.9.1",
     "gulp-clean": "^0.3.2",
-    "gulp-clean-css": "^2.0.12",
-    "gulp-concat": "^2.6.0",
-    "gulp-uglify": "^2.0.0"
+    "gulp-clean-css": "^3.0.3",
+    "gulp-concat": "^2.6.1",
+    "gulp-uglify": "^2.1.0"
   }
 }

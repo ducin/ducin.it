@@ -1,14 +1,38 @@
-var app = angular.module('HomepageApp', ['ui.bootstrap', 'pascalprecht.translate']);
+var app = angular.module('App', [
+    'ui.bootstrap',
+    'ui.router',
+    'pascalprecht.translate'
+]);
+
+app.config(['$sceProvider', function($sceProvider) {
+  $sceProvider.enabled(false);
+}]);
+
+app.config(['$urlRouterProvider', '$stateProvider', function($urlRouterProvider, $stateProvider) {
+    $urlRouterProvider.when('', '/home');
+    $stateProvider.state({
+        name: 'home',
+        url: '/home',
+        template: '<page-home></page-home>',
+        // component: 'pageHome'
+    });
+
+    $stateProvider.state({
+        name: 'presentations',
+        url: '/presentations',
+        template: '<page-presentations></page-presentations>',
+        // component: 'pagePresentations'
+    });
+}]);
 
 app.config(['$translateProvider', function ($translateProvider) {
     $translateProvider.useSanitizeValueStrategy('escape');
 
     $translateProvider.translations('en', {
         CONTACT: 'Contact',
+        PRESENTATIONS: 'Presentations',
         ABOUT_ME: 'About me',
         PROGRAMMING: 'Programming',
-        INTERESTS: 'Interests',
-        COMMUNITIES: 'Communities',
         WORK: 'Work',
         OPEN_SOURCE: 'Open Source',
         CONFERENCES: 'Conferences',
@@ -19,15 +43,18 @@ app.config(['$translateProvider', function ($translateProvider) {
         PUBLICATIONS: 'Publications',
         HELLO_WITH_NAME: 'Hello! My name is {{name}}.',
         DROP_MESSAGE_AT: 'Drop a message at',
-        AND_MORE: 'and more...',
-        AT: 'at'
+        CO_CREATOR: 'Co-creator of',
+        COMMUNITIES: 'Communities',
+        COMMUNITIES_DESC: 'I speak about modern frontend technologies at Polish and European conferences and meetups mainly related to JavaScript, Java, Python technologies',
+        TRAININGS: 'Trainings',
+        TRAININGS_DESC: 'Expert trainings on Frontend technologies // conducted in English and Polish // in cooperation with',
+        SLIDES: 'Slides'
     });
     $translateProvider.translations('pl', {
         CONTACT: 'Kontakt',
+        PRESENTATIONS: 'Prezentacje',
         ABOUT_ME: 'O mnie',
         PROGRAMMING: 'Programowanie',
-        INTERESTS: 'Zainteresowania',
-        COMMUNITIES: 'Społeczności',
         WORK: 'Praca',
         OPEN_SOURCE: 'Open Source',
         CONFERENCES: 'Konferencje',
@@ -38,88 +65,14 @@ app.config(['$translateProvider', function ($translateProvider) {
         PUBLICATIONS: 'Publikacje',
         HELLO_WITH_NAME: 'Cześć! Nazywam się {{name}}.',
         DROP_MESSAGE_AT: 'Pisz na adres',
-        AND_MORE: 'i inne...',
-        AT: 'w'
+        CO_CREATOR: 'Współtwórca',
+        COMMUNITIES: 'Społeczności',
+        COMMUNITIES_DESC: 'Prowadzę prezentacje dotyczące nowoczesnych technologii frontendowych, na konferencjach oraz meetupach poświęconym głównie JavaScriptowi, Javie oraz Pythonowi, w Polsce i innych krajach Europy',
+        TRAININGS: 'Szkolenia',
+        TRAININGS_DESC: 'Eksperckie szkolenia z technologii frontendowych // prowadzone po polsku lub angielsku // we współpracy z',
+        SLIDES: 'Slajdy'
     });
     $translateProvider.preferredLanguage('en');
-}]);
-
-app.constant('slides', [{
-    title: 'Conferences',
-    i18n: 'CONFERENCES',
-    imgPath: 'img/carousel/enterjs-2.jpg'
-}, {
-    title: 'Meetups',
-    i18n: 'MEETUPS',
-    imgPath: 'img/carousel/warsawjs.no10-2.jpg'
-}, {
-    title: 'Trainings',
-    i18n: 'TRAININGS',
-    imgPath: 'img/carousel/fullstack-2.jpg'
-}, {
-    title: 'Workshops',
-    i18n: 'WORKSHOPS',
-    imgPath: 'img/carousel/django-carrots-2.jpg'
-}, {
-    title: 'Events',
-    i18n: 'EVENTS',
-    imgPath: 'img/carousel/pywawsummit-2.jpg'
-}, {
-    title: 'Open Source',
-    i18n: 'OPEN_SOURCE',
-    imgPath: 'img/carousel/json-schema-faker.jpg'
-}, {
-    title: 'Publications',
-    i18n: 'PUBLICATIONS',
-    imgPath: 'img/carousel/publications-2.jpg'
-}]);
-
-app.constant('communities', [{
-    name: 'PyWaw',
-    link: 'http://pywaw.org'
-}, {
-    name: 'PyWaw Summit',
-    link: 'http://summit.pywaw.org'
-}, {
-    name: 'Codepot',
-    link: 'http://codepot.pl'
-}, {
-    name: 'Warsjawa',
-    link: 'http://warsjawa.pl'
-}, {
-    name: 'WarsawJS',
-    link: 'http://warsawjs.com'
-}, {
-    name: 'meet.js',
-    link: 'https://www.facebook.com/meetjspl'
-}]);
-
-app.controller('HomepageCtrl', ['$scope', '$translate', 'slides', 'communities', function ($scope, $translate, slides, communities) {
-    $scope.languages = [
-        {name: 'English', code: 'en'},
-        {name: 'Polski', code: 'pl'}
-    ];
-
-    $scope.setLanguage = function (code) {
-        $translate.use(code);
-    };
-
-    $scope.slides = slides;
-
-    $scope.slidesInterval = 3000;
-
-    $scope.communities = communities;
-
-    $translate.use('en');
-}]);
-
-app.controller('ModalContactCtrl', ['$scope', '$modal', function ($scope, $modal) {
-    $scope.open = function () {
-        $modal.open({
-            templateUrl: 'templates/modalContact.html',
-            controller: 'ModalInstanceCtrl'
-        });
-    };
 }]);
 
 app.controller('ModalInstanceCtrl', ['$scope', '$modalInstance', function ($scope, $modalInstance) {

@@ -1,0 +1,8 @@
+<carousel interval="$ctrl.slidesInterval">
+    <slide ng-repeat="slide in $ctrl.slides" active="slide.active">
+        <img ng-src="{{slide.imgPath}}" style="margin:auto;" alt="{{slide.title}} [960x600]" data-holder-rendered="true">
+        <div class="carousel-caption">
+            <h2>{{ slide.i18n | translate }}</h2>
+        </div>
+    </slide>
+</carousel>

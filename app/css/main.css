@@ -31,6 +31,14 @@ body {
     border-top: 1px solid #e5e5e5;
 }
 
+.presentations li {
+    margin: 10px;
+}
+
+.presentations .title {
+    font-size: 130%;
+}
+
 /* Customize container */
 @media (min-width: 768px) {
     .container {

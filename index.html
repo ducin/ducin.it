@@ -5,7 +5,7 @@
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta name="author" content="Tomasz Ducin">
-        <meta name="keywords" content="Tomasz Ducin, Software Consultant, Interface Architect, Professional, Community, Workshops, Presentations, JavaScript, Python, Java"/>
+        <meta name="keywords" content="Tomasz Ducin, Software Consultant, Interface Architect, Professional, Community, Trainings, Commercial Trainings, Presentations, JavaScript, Python, Java"/>
         <meta name="description" content="Senior Software Consultant / Interface Architect working in Warsaw, Poland. IT Community Activist.">
         <title>Tomasz Ducin Homepage</title>
         <link rel="canonical" href="http://ducin.it">
@@ -21,7 +21,7 @@
         <script src="dist/app.js"></script>
     </head>
 
-    <body ng-app="HomepageApp">
+    <body ng-app="App">
 
 <!-- Google Tag Manager -->
 <noscript><iframe src="//www.googletagmanager.com/ns.html?id=GTM-WBQ2PN"
@@ -33,93 +33,10 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 })(window,document,'script','dataLayer','GTM-WBQ2PN');</script>
 <!-- End Google Tag Manager -->
 
-        <div class="container" ng-controller="HomepageCtrl">
-            <div class="header">
-                <nav ng-controller="ModalContactCtrl">
-                    <ul class="nav nav-pills pull-right">
-                        <li role="presentation">
-                            <span class="language-box">
-                                <img src="img/blank.png" class="flag flag-{{language.code}}" title="{{language.name}}" alt="{{language.name}}" ng-click="setLanguage(language.code)" ng-repeat="language in languages" />
-                            </span>
-                        </li>
-                        <li role="presentation" class="active"><a href="#">{{ 'ABOUT_ME' | translate }}</a></li>
-                        <li role="presentation" ng-click="open()"><a href="#">{{ 'CONTACT' | translate }}</a></li>
-                    </ul>
-                </nav>
-                <h3 class="text-muted">ducin.it</h3>
-            </div>
-
-            <div class="row text-center marketing">
-                <h2>{{ 'HELLO_WITH_NAME' | translate:'{name: "Tomasz Ducin"}' }}</h2>
-            </div>
-
-            <carousel interval="slidesInterval">
-                <slide ng-repeat="slide in slides" active="slide.active">
-                    <img ng-src="{{slide.imgPath}}" style="margin:auto;" alt="{{slide.title}} [960x600]" data-holder-rendered="true">
-                    <div class="carousel-caption">
-                        <h2>{{ slide.i18n | translate }}</h2>
-                    </div>
-                </slide>
-            </carousel>
-
-            <div class="row marketing">
-                <div class="col-lg-6">
-                    <h3>{{ 'PROGRAMMING' | translate }}</h3>
-                    <p>
-                        JavaScript, Java, Python
-                        <br />
-                        Frontend & Backend
-                    </p>
-
-                    <h3>{{ 'INTERESTS' | translate }}</h3>
-                    <p>
-                        Architecture, Agile, HR/IT,
-                        <br />
-                        Public Speaking
-                    </p>
-
-                    <h3>{{ 'OPEN_SOURCE' | translate }}</h3>
-                    <p>
-                        <a href="http://json-schema-faker.js.org/">JSON Schema Faker</a>
-                    </p>
-                </div>
-
-                <div class="col-lg-6">
-                    <h3>{{ 'COMMUNITIES' | translate }}</h3>
-                    <p>
-                        <span ng-repeat="community in communities"><a href="{{ community.link }}">{{$first ? '' : ','}}
-                            {{ community.name }}</a></span>
-                        {{ 'AND_MORE' | translate }}
-                    </p>
-
-                    <h3>{{ 'WORK' | translate }}</h3>
-                    <p>
-                        Senior Software Consultant
-                        <br />
-                        {{ 'AT' | translate }} <a href="http://www.cybercom.com/pl/Poland/">Cybercom Poland</a>
-                    </p>
-                </div>
-            </div>
-
-            <footer class="footer">
-                <div class="col-lg-6">
-                    <p>&copy; Tomasz Ducin 2016</p>
-                </div>
-
-                <div class="col-lg-6">
-                    <ul class="social pull-right">
-                        <li><a target="_blank" href="http://twitter.com/tomasz_ducin"><i class="fa fa-twitter"></i></a></li>
-                        <li><a target="_blank" href="https://www.linkedin.com/pub/tomasz-ducin/4b/34a/822"><i class="fa fa-linkedin"></i></a></li>
-                        <li><a target="_blank" href="https://github.com/ducin"><i class="fa fa-github"></i></a></li>
-                        <li><a target="_blank" href="http://slides.com/ducin"><img src="img/slides.png" alt="slides"></a></li>
-                        <li><a target="_blank" href="http://sys-exit.blogspot.com/"><i class="fa fa-rss"></i></a></li>
-                        <li><a target="_blank" href="https://stackoverflow.com/users/769384/ducin"><i class="fa fa-stack-overflow"></i></a></li>
-                        <li><a target="_blank" href="http://crossweb.pl/profile/tomasz-ducin"><i class="fa fa-bullhorn"></i></a></li>
-                        <li><a href="{{'mailto:'}}{{'tomasz'}}{{'@'}}ducin.it"><i class="fa fa-envelope-o"></i></a></li>
-                    </ul>
-                </div>
-            </footer>
-
+        <div class="container">
+            <page-header></page-header>
+            <ui-view></ui-view>
+            <page-footer></page-footer>
         </div>
     </body>
 </html>

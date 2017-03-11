@@ -1,0 +1,20 @@
+<div class="header">
+    <nav>
+        <ul class="nav nav-pills pull-right">
+            <li role="presentation">
+                <span class="language-box">
+                    <img src="img/blank.png"
+                        ng-repeat="language in $ctrl.languages"
+                        class="flag flag-{{language.code}}"
+                        title="{{language.name}}"
+                        alt="{{language.name}}"
+                        ng-click="$ctrl.setLanguage(language.code)" />
+                </span>
+            </li>
+            <li role="presentation" ui-sref="home" ui-sref-active="active"><a href="#">{{ 'ABOUT_ME' | translate }}</a></li>
+            <li role="presentation" ui-sref="presentations" ui-sref-active="active"><a href="#">{{ 'PRESENTATIONS' | translate }}</a></li>
+            <li role="presentation" ng-click="$ctrl.open()"><a href="#">{{ 'CONTACT' | translate }}</a></li>
+        </ul>
+    </nav>
+    <h3 class="text-muted">ducin.it</h3>
+</div>

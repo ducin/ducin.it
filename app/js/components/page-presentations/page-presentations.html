@@ -1,0 +1,22 @@
+<h2>{{::$ctrl.presentations.length}} {{ 'PRESENTATIONS' | translate }}</h2>
+
+<ul class="presentations">
+    <li ng-repeat="presentation in $ctrl.presentations">
+        <div>
+            {{::presentation.date}},
+            {{::presentation.event}}
+        </div>
+        <div class="title">
+            "{{::presentation.title}}"
+        </div>
+        <div ng-if="presentation.links.slides">
+            <a href={{::presentation.links.slides}}>{{ 'SLIDES' | translate }}</a>
+        </div>
+        <div ng-if="!presentation.address.city">
+            {{::presentation.address}}
+        </div>
+        <div ng-if="presentation.address.city">
+            {{::presentation.address.city}}, {{::presentation.address.countryCode}}
+        </div>
+    </li>
+</ul>

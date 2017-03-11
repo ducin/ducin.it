@@ -1,18 +1,19 @@
-var gulp = require('gulp');
-var concat = require('gulp-concat');
-var clean = require('gulp-clean');
-var uglify = require('gulp-uglify');
-var cleanCSS = require('gulp-clean-css');
+const gulp = require('gulp');
+const concat = require('gulp-concat');
+const clean = require('gulp-clean');
+const uglify = require('gulp-uglify');
+const cleanCSS = require('gulp-clean-css');
 
-var cfg = {
+const cfg = {
   js: {
     vendor: [
       './node_modules/angular/angular.min.js',
       './node_modules/angular-translate/dist/angular-translate.min.js',
-      './node_modules/angular-bootstrap/ui-bootstrap.min.js',
-      './node_modules/angular-bootstrap/ui-bootstrap-tpls.min.js'
+      './node_modules/angular-bootstrap/ui-bootstrap.js',
+      './node_modules/angular-bootstrap/ui-bootstrap-tpls.js',
+      './node_modules/angular-ui-router/release/angular-ui-router.js'
     ],
-    app: './app/js/*'
+    app: './app/js/**/*.js'
   },
   css: {
     vendor: [
@@ -40,7 +41,8 @@ gulp.task('vendor-js', ['clean'], function() {
 
 gulp.task('app-js', ['clean'], function() {
   return gulp.src(cfg.js.app)
-    .pipe(uglify('app.js'))
+    // .pipe(uglify())
+    .pipe(concat('app.js'))
     .pipe(gulp.dest('./dist/'));
 });
 
