@@ -1,5 +1,6 @@
 var slides = {
     "5-architectures": "slides.com/ducin/5-architectures-of-asynchronous-javascript",
+    "async-await": "slides.com/ducin/async-functions-awaiting-you",
     "typescript": "slides.com/ducin/javascript-plus-java-equals-typescript",
     "backend-less-development": "slides.com/ducin/backend-less-development"
 }
