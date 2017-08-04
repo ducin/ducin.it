@@ -3,18 +3,44 @@
 const $map = document.getElementById('map-canvas');
 const latlng = (lat, lng) => new google.maps.LatLng(lat, lng);
 
+// const events = require('./data.json');
+const presentations = require('./presentations.json');
+const venues = require('./venues.json');
+
+const venueAggregator = presentations.reduce((aggr, event) => {
+  if (!aggr[event.venueId]){
+    aggr[event.venueId] = {
+      venue: venues[event.venueId],
+      presentations: []
+    };
+  }
+  let item = Object.assign({}, event);
+  delete item.venueId;
+  aggr[event.venueId].presentations.push(item);
+  return aggr;
+}, {});
+
+const venuePresentations = [];
+for (venueId in venueAggregator) {
+  if (venueAggregator.hasOwnProperty(venueId)){
+    venuePresentations.push(venueAggregator[venueId]);
+  }
+}
+
 const markerTpl = item => `<div class="marker">
 <h3>${item.venue.name}</h3>
 <h4>${item.venue.city}, ${item.venue.countryCode}</h4>
-<div><ul>
-  <li><i>${item.title}</i> at ${item.event}</li>
-</ul></div>
+<div>
+  <ul>${item.presentations.map(p =>
+    `<li><i>${p.title}</i> at ${p.event}, ${p.date}</li>`
+  )}</ul>
+</div>
 </div>`;
 
 const initMap = () => {
   const map = new google.maps.Map($map, {
     zoom: 4,
-    center: latlng(50, 10),
+    center: latlng(52, 10),
     mapTypeId: google.maps.MapTypeId.ROADMAP
   });
   let theOnlyWindow = null;
@@ -41,8 +67,7 @@ const initMap = () => {
     }
   };
 
-  const events = require('./data.json');
-  events.forEach(addMarker);
+  venuePresentations.forEach(addMarker);
 }
 
 initMap();

@@ -12,7 +12,7 @@
   "codenode-london": {
     "city": "London",
     "countryCode": "UK",
-    "venue": "CodeNode",
+    "name": "CodeNode",
     "latitude": 51.5186424,
     "longitude": -0.08601169999997182
   },
