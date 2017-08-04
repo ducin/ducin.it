@@ -1,0 +1,253 @@
+[
+  {
+    "title": "Continous Integration with git",
+    "event": "Git Kata 2",
+    "date": "2013.12.08",
+    "venueId": "cent3-warsaw"
+  }, {
+    "title": "git scrum",
+    "event": "Git Kata 2",
+    "date": "2013.12.08",
+    "venueId": "cent3-warsaw"
+  }, {
+    "title": "Nasz system rozmawia po Thrifcie (Our system speaks Thrift)",
+    "event": "PyWaw (Python Warsaw User Group) #31",
+    "date": "2013.12.16",
+    "venueId": "zz-warsaw"
+  }, {
+    "title": "python & django workshops",
+    "event": "Django Carrots IV",
+    "date": "2014.05.09",
+    "venueId": "techuni-warsaw"
+  }, {
+    "title": "Modern webapp development workflow/tools workshops",
+    "event": "Warsjawa",
+    "date": "2014.09.26",
+    "venueId": "mimuw-warsaw"
+  }, {
+    "title": "A co, jeśli nie mamy API?",
+    "event": "PyWaw (Python Warsaw User Group) #41",
+    "date": "2014.10.13",
+    "venueId": "padbar-warsaw"
+  }, {
+    "title": "yo coffee! or butler on call",
+    "event": "meet.js",
+    "date": "2014.10.16",
+    "venueId": "laboratoriumee-warsaw"
+  }, {
+    "title": "What if we don't have API",
+    "event": "WarsawJS #2",
+    "date": "2014.10.28",
+    "venueId": "panstwomiasto-warsaw"
+  }, {
+    "title": "python & django workshops",
+    "event": "Django Girls",
+    "date": "2014.11.07",
+    "venueId": "laboratoriumee-warsaw"
+  }, {
+    "title": "yo coffee!... czyli kamerdyner na wezwanie",
+    "event": "LJUG (Lublin Java User Group)",
+    "date": "2014.11.04",
+    "venueId": "techincubator-lublin"
+  }, {
+    "title": "yo coffee!... czyli kamerdyner na wezwanie",
+    "event": "WJUG (Warsaw Java User Group) #147",
+    "date": "2014.11.12",
+    "venueId": "mimuw-warsaw"
+  }, {
+    "title": "python & django workshops",
+    "event": "Django Carrots V",
+    "date": "2015.01.16",
+    "venueId": "techuni-warsaw"
+  }, {
+    "title": "All that JS",
+    "event": "WarsawJS #7",
+    "date": "2015.03.18",
+    "venueId": "panstwomiasto-warsaw"
+  }, {
+    "title": "Sytuacja na froncie, czyli czy warto inwestować w JavaScript",
+    "event": "CybercomDEV",
+    "date": "2015.05.23",
+    "venueId": "dk-lodz"
+  }, {
+    "title": "Grunt.js: Frontend Automation",
+    "event": "meet.js",
+    "date": "2015.06.10",
+    "venueId": "agora-warsaw"
+  }, {
+    "title": "Enterprise Interface Architecture: JSON Schema",
+    "event": "WarsawJS #10",
+    "date": "2015.06.17",
+    "venueId": "panstwomiasto-warsaw"
+  }, {
+    "title": "JSON Schema",
+    "event": "PyWaw (Python Warsaw User Group) #50",
+    "date": "2015.08.31",
+    "venueId": "crux-warsaw"
+  }, {
+    "title": "JSON Schema: Controlling Communication Structures",
+    "event": "PyCon PL '15",
+    "date": "2015.10.18",
+    "venueId": "congress-ossa"
+  }, {
+    "title": "Enterprise Interface Architecture: Seeking Scalable Design",
+    "event": "WarsawJS #14",
+    "date": "2015.10.21",
+    "venueId": "panstwomiasto-warsaw"
+  }, {
+    "title": "Enterprise Interface Architecture",
+    "event": "FullStack London",
+    "date": "2015.10.28",
+    "venueId": "codenode-london"
+  }, {
+    "title": "JSON taki albo owaki... czyli kontrolowanie struktur z JSON Schema",
+    "event": "WJUG (Warsaw Java User Group) #169",
+    "date": "2015.11.03",
+    "venueId": "mimuw-warsaw"
+  }, {
+    "title": "API Contracting: first steps",
+    "event": "PyWaw (Python Warsaw User Group) #54",
+    "date": "2016.01.25",
+    "venueId": "crux-warsaw"
+  }, {
+    "title": "TypeScript, Backend-less Development",
+    "event": "Workshops",
+    "date": "2016.02.11",
+    "venueId": "ballerup-sdc"
+  }, {
+    "title": "Backend-less Development in AngularJS",
+    "event": "AngularJS Warsaw #6",
+    "date": "2016.02.22",
+    "venueId": "aviva-warsaw"
+  }, {
+    "title": "Backend-less Development Revisited",
+    "event": "JavaScript Summit",
+    "date": "2016.02.25",
+    "venueId": "online"
+  }, {
+    "title": "Backend-less Development Revisited",
+    "event": "4Developers",
+    "date": "2016.04.11",
+    "venueId": "hotel-sangate-warsaw"
+  }, {
+    "title": "JavaScript + Java = TypeScript",
+    "event": "4Developers",
+    "date": "2016.04.11",
+    "venueId": "hotel-sangate-warsaw"
+  }, {
+    "title": "JSON Schema: validate, generate, mock & automate",
+    "event": "DevCrowd",
+    "date": "2016.04.23",
+    "venueId": "techuni-szczecin"
+  }, {
+    "title": "JavaScript + Java = TypeScript",
+    "event": "DevCrowd",
+    "date": "2016.04.23",
+    "venueId": "techuni-szczecin"
+  }, {
+    "title": "Backend-less Development Revisited",
+    "event": "Geecon",
+    "date": "2016.05.13",
+    "venueId": "multikino-krakow"
+  }, {
+    "title": "JavaScript + Java = TypeScript",
+    "event": "WarsawJS #22",
+    "date": "2016.06.08",
+    "venueId": "panstwomiasto-warsaw"
+  }, {
+    "title": "JavaScript + Java = TypeScript",
+    "event": "EnterJS",
+    "date": "2016.06.15",
+    "venueId": "darmstadtium-darmstadt"
+  }, {
+    "title": "Backend-less Development Revisited",
+    "event": "EnterJS",
+    "date": "2016.06.16",
+    "venueId": "darmstadtium-darmstadt"
+  }, {
+    "title": "Backend-less Development Revisited",
+    "event": "FullStack London",
+    "date": "2016.07.15",
+    "venueId": "codenode-london"
+  }, {
+    "title": "You don't know TS",
+    "event": "meet.js",
+    "date": "2016.09.08",
+    "venueId": "concept13-warsaw"
+  }, {
+    "title": "Backend-less Development Revisited",
+    "event": "DevDay",
+    "date": "2016.09.15",
+    "venueId": "multikino-krakow"
+  }, {
+    "title": "JavaScript + Java = TypeScript",
+    "event": "WebExpo",
+    "date": "2016.09.23",
+    "venueId": "lucerna-praha"
+  }, {
+    "title": "Backend-less Development Revisited",
+    "event": "JDD (Java Developer Day)",
+    "date": "2016.10.11",
+    "venueId": "hilton-krakow"
+  }, {
+    "title": "ng-enterprise",
+    "event": "NG Poland",
+    "date": "2016.11.22",
+    "venueId": "national-stadium-warsaw"
+  }, {
+    "title": "Backend-less Development Revisited",
+    "event": "IT NonStop",
+    "date": "2016.12.10",
+    "venueId": "scc-wroclaw"
+  }, {
+    "title": "JavaScript + Java = TypeScript",
+    "event": "WJUG (Warsaw Java User Group) #196",
+    "date": "2017.01.31",
+    "venueId": "mimuw-warsaw"
+  }, {
+    "title": "JavaScript + Java = TypeScript",
+    "event": "AngularJS Warsaw #11",
+    "date": "2017.02.14",
+    "venueId": "microsoft-warsaw"
+  }, {
+    "title": "5 architectures of asynchronous JavaScript",
+    "event": "4Developers",
+    "date": "2017.04.03",
+    "venueId": "hotel-sangate-warsaw"
+  }, {
+    "title": "JavaScript + Java = TypeScript",
+    "event": "InfoMEET",
+    "date": "2017.04.22",
+    "venueId": "national-stadium-warsaw"
+  }, {
+    "title": "Async Functions Awaiting You",
+    "event": "meet.js #24",
+    "date": "2017.05.25",
+    "venueId": "miejsce-chwila-warsaw"
+  }, {
+    "title": "Async Functions Awaiting You",
+    "event": "JS-Poland",
+    "date": "2017.06.19",
+    "venueId": "golden-terraces-warsaw"
+  }, {
+    "title": "Up & Running with TypeScript (workshop)",
+    "event": "DevoxxPL",
+    "date": "2017.06.21",
+    "venueId": "ice-krakow"
+  }, {
+    "title": "5 architectures of Asynchronous JavaScript",
+    "event": "DevoxxPL",
+    "date": "2017.06.22",
+    "venueId": "ice-krakow"
+  }, {
+    "title": "5 architectures of Asynchronous JavaScript",
+    "event": "FullStack London",
+    "date": "2017.07.13",
+    "venueId": "codenode-london"
+  }, {
+    "title": "5 architectures of Asynchronous JavaScript",
+    "event": "Nordic.js",
+    "date": "2017.09.07",
+    "venueId": "nobelberget-stockholm"
+  }
+]
