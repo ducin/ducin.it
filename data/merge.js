@@ -23,7 +23,7 @@ function writeJSONPromise(filename, json){
 }
 
 var filePromises = [
-    'events.json',
+    'presentations.json',
     'venues.json'
 ].map(file => readJSONPromise(file).catch(errInfo => console.error("Failed to read file: ", errInfo[1], errInfo[0])))
 
