@@ -27,13 +27,17 @@ for (venueId in venueAggregator) {
   }
 }
 
+const videoTpl = item => item.video ? ` <a class="video" href="${item.video}" title="see video">📹</a>` : '';
+const slideTpl = item => item.slides ? ` <a class="slides" href="${item.slides}" title="see slides">💻</a>` : '';
+const eventTpl = item => item.link ? ` <a href="item.link">${item.event}</a>` : ` ${item.event}`;
+
 const markerTpl = item => `<div class="marker">
 <h3>${item.venue.name}</h3>
 <h4>${item.venue.city}, ${item.venue.countryCode}</h4>
 <div>
   <ul>${item.presentations.map(p =>
-    `<li><i>${p.title}</i> at ${p.event}, ${p.date}</li>`
-  )}</ul>
+    `<li><i>${p.title}</i> at ${eventTpl(p)}, ${p.date} ${videoTpl(p)} ${slideTpl(p)}</li>`
+  ).join('')}</ul>
 </div>
 </div>`;
 
@@ -78,20 +82,23 @@ module.exports=[
     "title": "Continous Integration with git",
     "event": "Git Kata 2",
     "link": "http://hopbit.github.io/git-kata/",
+    "slides": "http://slides.com/ducin/git-kata-2-continuous-integration",
     "date": "2013.12.08",
     "venueId": "cent3-warsaw"
   }, {
     "title": "git scrum",
     "event": "Git Kata 2",
     "link": "http://hopbit.github.io/git-kata/",
+    "slides": "http://slides.com/ducin/git-kata-2-git-scrum",
     "date": "2013.12.08",
     "venueId": "cent3-warsaw"
   }, {
     "title": "Nasz system rozmawia po Thrifcie (Our system speaks Thrift)",
     "event": "PyWaw (Python Warsaw User Group) #31",
-    "date": "2013.12.16",
     "link": "http://pywaw.org/31/",
     "video": "https://www.youtube.com/watch?v=ZUeXwNdi0CI",
+    "slides": "http://slides.com/ducin/thrift",
+    "date": "2013.12.16",
     "venueId": "zz-warsaw"
   }, {
     "title": "python & django workshops",
@@ -108,13 +115,15 @@ module.exports=[
   }, {
     "title": "A co, jeśli nie mamy API?",
     "event": "PyWaw (Python Warsaw User Group) #41",
-    "date": "2014.10.13",
     "link": "http://pywaw.org/41/",
+    "slides": "http://slides.com/ducin/what-if-we-don-t-have-api",
+    "date": "2014.10.13",
     "venueId": "padbar-warsaw"
   }, {
     "title": "yo coffee! or butler on call",
     "event": "meet.js",
     "link": "https://www.meetup.com/MeetjsWarsaw/events/208002012/",
+    "slides": "http://slides.com/ducin/yo-coffee-or-butler-on-call",
     "date": "2014.10.16",
     "venueId": "laboratoriumee-warsaw"
   }, {
@@ -122,6 +131,7 @@ module.exports=[
     "event": "WarsawJS #2",
     "link": "http://warsawjs.com/meetup-2/talk-what-if-we-dont-have-api.html",
     "video": "https://www.youtube.com/watch?v=QJZtl6vZHvc",
+    "slides": "http://slides.com/ducin/what-if-we-don-t-have-api",
     "date": "2014.10.28",
     "venueId": "panstwomiasto-warsaw"
   }, {
@@ -134,6 +144,7 @@ module.exports=[
     "title": "yo coffee!... czyli kamerdyner na wezwanie",
     "event": "LJUG (Lublin Java User Group)",
     "link": "https://www.meetup.com/Lublin-Java-User-Group/events/216863722/",
+    "slides": "http://slides.com/ducin/yo-coffee-or-butler-on-call",
     "date": "2014.11.04",
     "venueId": "techincubator-lublin"
   }, {
@@ -141,6 +152,7 @@ module.exports=[
     "event": "WJUG (Warsaw Java User Group) #147",
     "link": "http://warszawa.jug.pl/#/meeting/147",
     "video": "https://www.youtube.com/watch?v=Jur_75wq4KA",
+    "slides": "http://slides.com/ducin/yo-coffee-or-butler-on-call",
     "date": "2014.11.12",
     "venueId": "mimuw-warsaw"
   }, {
@@ -154,6 +166,7 @@ module.exports=[
     "event": "WarsawJS #7",
     "link": "http://warsawjs.com/meetup-7/talk-all-that-js.html",
     "video": "https://www.youtube.com/watch?v=VFNnBhkiMrg",
+    "slides": "http://slides.com/ducin/all-that-js",
     "date": "2015.03.18",
     "venueId": "panstwomiasto-warsaw"
   }, {
@@ -161,12 +174,14 @@ module.exports=[
     "event": "CybercomDEV",
     "link": "https://cybercomdev.pl/",
     "video": "http://kenis.pl/sytuacja-na-froncie-czyli-czy-warto-inwestowac-w-javascript,11467",
+    "slides": "http://slides.com/ducin/situation-on-the-front",
     "date": "2015.05.23",
     "venueId": "dk-lodz"
   }, {
     "title": "Grunt.js: Frontend Automation",
     "event": "meet.js",
     "link": "http://crossweb.pl/wydarzenia/meet-js-warszawa-czerwiec-2015/",
+    "slides": "http://slides.com/ducin/gruntjs-frontend-automation-briefly",
     "date": "2015.06.10",
     "venueId": "agora-warsaw"
   }, {
@@ -174,19 +189,22 @@ module.exports=[
     "event": "WarsawJS #10",
     "link": "http://warsawjs.com/meetup-10/talk-enterprise-interface-architecture-json-schema-en.html",
     "video": "https://www.youtube.com/watch?v=TkqiUG3j_Xw",
+    "slides": "http://slides.com/ducin/json-schema",
     "date": "2015.06.17",
     "venueId": "panstwomiasto-warsaw"
   }, {
     "title": "JSON Schema",
     "event": "PyWaw (Python Warsaw User Group) #50",
-    "date": "2015.08.31",
     "link": "http://pywaw.org/50/",
     "video": "https://www.youtube.com/watch?v=C-UEnklfCN8",
+    "slides": "http://slides.com/ducin/json-schema-non-js",
+    "date": "2015.08.31",
     "venueId": "crux-warsaw"
   }, {
     "title": "JSON Schema: Controlling Communication Structures",
     "event": "PyCon PL '15",
     "link": "https://pl.pycon.org/2015/",
+    "slides": "http://slides.com/ducin/json-schema-non-js",
     "date": "2015.10.18",
     "venueId": "congress-ossa"
   }, {
@@ -194,6 +212,7 @@ module.exports=[
     "event": "WarsawJS #14",
     "link": "http://warsawjs.com/meetup-14/talk-enterprise-interface-architecture-seeking-scalable-design.html",
     "video": "https://www.youtube.com/watch?v=a6kIeFimgxA",
+    "slides": "http://slides.com/ducin/seeking-scalable-design",
     "date": "2015.10.21",
     "venueId": "panstwomiasto-warsaw"
   }, {
@@ -201,6 +220,7 @@ module.exports=[
     "event": "FullStack London",
     "link": "https://skillsmatter.com/conferences/6612-fullstack",
     "video": "https://skillsmatter.com/skillscasts/6780-enterprise-interface-architecture",
+    "slides": "http://slides.com/ducin/enterprise-interface-architecture",
     "date": "2015.10.28",
     "venueId": "codenode-london"
   }, {
@@ -208,6 +228,7 @@ module.exports=[
     "event": "WJUG (Warsaw Java User Group) #169",
     "link": "http://warszawa.jug.pl/#/meeting/169",
     "video": "https://www.youtube.com/watch?v=tyfFvra29JU",
+    "slides": "http://slides.com/ducin/json-schema-non-js",
     "date": "2015.11.03",
     "venueId": "mimuw-warsaw"
   }, {
@@ -215,6 +236,7 @@ module.exports=[
     "event": "PyWaw (Python Warsaw User Group) #54",
     "link": "http://pywaw.org/54/",
     "video": "https://www.youtube.com/watch?v=lqCxbvQdfqk",
+    "slides": "http://slides.com/ducin/api-contracting",
     "date": "2016.01.25",
     "venueId": "crux-warsaw"
   }, {
@@ -226,36 +248,42 @@ module.exports=[
     "title": "Backend-less Development in AngularJS",
     "event": "AngularJS Warsaw #6",
     "link": "https://www.meetup.com/AngularJS-Warsaw/events/228863948/",
+    "slides": "http://slides.com/ducin/backend-less-development",
     "date": "2016.02.22",
     "venueId": "aviva-warsaw"
   }, {
     "title": "Backend-less Development Revisited",
     "event": "JavaScript Summit",
     "link": "http://environmentsforhumans.com/2016/javascript-summit/",
+    "slides": "http://slides.com/ducin/backend-less-development",
     "date": "2016.02.25",
     "venueId": "online"
   }, {
     "title": "Backend-less Development Revisited",
     "event": "4Developers",
     "link": "http://2016.4developers.org.pl/",
+    "slides": "http://slides.com/ducin/backend-less-development",
     "date": "2016.04.11",
     "venueId": "hotel-sangate-warsaw"
   }, {
     "title": "JavaScript + Java = TypeScript",
     "event": "4Developers",
     "link": "http://2016.4developers.org.pl/",
+    "slides": "http://slides.com/ducin/javascript-plus-java-equals-typescript",
     "date": "2016.04.11",
     "venueId": "hotel-sangate-warsaw"
   }, {
     "title": "JSON Schema: validate, generate, mock & automate",
     "event": "DevCrowd",
     "link": "http://devcrowd.pl/",
+    "slides": "http://slides.com/ducin/json-schema-non-js",
     "date": "2016.04.23",
     "venueId": "techuni-szczecin"
   }, {
     "title": "JavaScript + Java = TypeScript",
     "event": "DevCrowd",
     "link": "http://devcrowd.pl/",
+    "slides": "http://slides.com/ducin/javascript-plus-java-equals-typescript",
     "date": "2016.04.23",
     "venueId": "techuni-szczecin"
   }, {
@@ -263,6 +291,7 @@ module.exports=[
     "event": "Geecon",
     "link": "https://2016.geecon.org/",
     "video": "https://vimeo.com/170796171",
+    "slides": "http://slides.com/ducin/backend-less-development",
     "date": "2016.05.13",
     "venueId": "multikino-krakow"
   }, {
@@ -270,17 +299,21 @@ module.exports=[
     "event": "WarsawJS #22",
     "link": "http://warsawjs.com/meetup-22/talk-tomasz-ducin-javascript-java-typescript.html",
     "video": "https://www.youtube.com/watch?v=jtdIHM24LwQ",
+    "slides": "http://slides.com/ducin/javascript-plus-java-equals-typescript",
     "date": "2016.06.08",
     "venueId": "panstwomiasto-warsaw"
   }, {
     "title": "JavaScript + Java = TypeScript",
     "event": "EnterJS",
     "link": "https://www.enterjs.de/archive/2016/",
+    "slides": "http://slides.com/ducin/javascript-plus-java-equals-typescript",
     "date": "2016.06.15",
     "venueId": "darmstadtium-darmstadt"
   }, {
     "title": "Backend-less Development Revisited",
     "event": "EnterJS",
+    "link": "https://www.enterjs.de/archive/2016/",
+    "slides": "http://slides.com/ducin/backend-less-development",
     "date": "2016.06.16",
     "venueId": "darmstadtium-darmstadt"
   }, {
@@ -288,6 +321,7 @@ module.exports=[
     "event": "FullStack London",
     "link": "https://skillsmatter.com/conferences/7278-fullstack-2016-the-conference-on-javascript-node-and-internet-of-things",
     "video": "https://skillsmatter.com/skillscasts/8173-let-s-liberate-frontend-backend-less-development-revisited",
+    "slides": "http://slides.com/ducin/backend-less-development",
     "date": "2016.07.15",
     "venueId": "codenode-london"
   }, {
@@ -301,6 +335,7 @@ module.exports=[
     "event": "DevDay",
     "link": "http://devday.pl/archive/2016/",
     "video": "https://www.youtube.com/watch?v=K8QLEJ8E-Ss",
+    "slides": "http://slides.com/ducin/backend-less-development",
     "date": "2016.09.15",
     "venueId": "multikino-krakow"
   }, {
@@ -308,6 +343,7 @@ module.exports=[
     "event": "WebExpo",
     "link": "https://www.webexpo.net/prague2016/",
     "video": "https://www.webexpo.net/prague2016/talk/javascript-java-typescript/",
+    "slides": "http://slides.com/ducin/javascript-plus-java-equals-typescript",
     "date": "2016.09.23",
     "venueId": "lucerna-praha"
   }, {
@@ -315,6 +351,7 @@ module.exports=[
     "event": "JDD (Java Developer Day)",
     "link": "http://16.jdd.org.pl/",
     "video": "https://www.youtube.com/watch?v=WxtcSjsGQaM",
+    "slides": "http://slides.com/ducin/backend-less-development",
     "date": "2016.10.11",
     "venueId": "hilton-krakow"
   }, {
@@ -322,12 +359,14 @@ module.exports=[
     "event": "NG Poland",
     "link": "http://ng-poland.pl/index2016.html",
     "video": "https://www.youtube.com/watch?v=n_llOL3QMgQ",
+    "slides": "http://slides.com/ducin/ng-enterprise",
     "date": "2016.11.22",
     "venueId": "national-stadium-warsaw"
   }, {
     "title": "Backend-less Development Revisited",
     "event": "IT NonStop",
     "link": "http://2016.it-nonstop.net/city/wroclaw",
+    "slides": "http://slides.com/ducin/backend-less-development",
     "date": "2016.12.10",
     "venueId": "scc-wroclaw"
   }, {
@@ -335,12 +374,14 @@ module.exports=[
     "event": "WJUG (Warsaw Java User Group) #196",
     "link": "http://warszawa.jug.pl/#/meeting/196",
     "video": "https://www.youtube.com/watch?v=T2pJIlMVq6g&t=130s",
+    "slides": "http://slides.com/ducin/javascript-plus-java-equals-typescript",
     "date": "2017.01.31",
     "venueId": "mimuw-warsaw"
   }, {
     "title": "JavaScript + Java = TypeScript",
     "event": "AngularJS Warsaw #11",
     "link": "https://www.meetup.com/AngularJS-Warsaw/events/237216962/",
+    "slides": "http://slides.com/ducin/javascript-plus-java-equals-typescript",
     "date": "2017.02.14",
     "venueId": "microsoft-warsaw"
   }, {
@@ -348,18 +389,21 @@ module.exports=[
     "event": "4Developers",
     "link": "http://2017.4developers.org.pl/",
     "video": "https://www.youtube.com/watch?v=1_p7nWMNczU",
+    "slides": "http://slides.com/ducin/5-architectures-of-asynchronous-javascript",
     "date": "2017.04.03",
     "venueId": "hotel-sangate-warsaw"
   }, {
     "title": "JavaScript + Java = TypeScript",
     "event": "InfoMEET",
     "link": "http://novial.pl/infomeet/p/63/infomeet-warszawa",
+    "slides": "http://slides.com/ducin/javascript-plus-java-equals-typescript",
     "date": "2017.04.22",
     "venueId": "national-stadium-warsaw"
   }, {
     "title": "Async Functions Awaiting You",
     "event": "meet.js #24",
     "link": "https://www.meetup.com/MeetjsWarsaw/events/239754079/",
+    "slides": "http://slides.com/ducin/async-functions-awaiting-you",
     "date": "2017.05.25",
     "venueId": "miejsce-chwila-warsaw"
   }, {
@@ -367,6 +411,7 @@ module.exports=[
     "event": "JS-Poland",
     "link": "http://js-poland.pl/",
     "video": "https://www.youtube.com/watch?v=IYikhsDVvic",
+    "slides": "http://slides.com/ducin/async-functions-awaiting-you",
     "date": "2017.06.19",
     "venueId": "golden-terraces-warsaw"
   }, {
@@ -380,6 +425,7 @@ module.exports=[
     "event": "DevoxxPL",
     "link": "http://2017.devoxx.pl/",
     "video": "https://www.youtube.com/watch?v=9hgic_ccxgs",
+    "slides": "http://slides.com/ducin/5-architectures-of-asynchronous-javascript",
     "date": "2017.06.22",
     "venueId": "ice-krakow"
   }, {
@@ -387,12 +433,14 @@ module.exports=[
     "event": "FullStack London",
     "link": "https://skillsmatter.com/conferences/8264-fullstack-2017-the-conference-on-javascript-node-and-internet-of-things",
     "video": "https://skillsmatter.com/skillscasts/10371-5-architectures-of-asynchronous-javascript",
+    "slides": "http://slides.com/ducin/5-architectures-of-asynchronous-javascript",
     "date": "2017.07.13",
     "venueId": "codenode-london"
   }, {
     "title": "5 architectures of Asynchronous JavaScript",
     "event": "Nordic.js",
     "link": "http://nordicjs.com/",
+    "slides": "http://slides.com/ducin/5-architectures-of-asynchronous-javascript",
     "date": "2017.09.07",
     "venueId": "nobelberget-stockholm"
   }

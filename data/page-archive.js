@@ -26,13 +26,17 @@ for (venueId in venueAggregator) {
   }
 }
 
+const videoTpl = item => item.video ? ` <a class="video" href="${item.video}" title="see video">📹</a>` : '';
+const slideTpl = item => item.slides ? ` <a class="slides" href="${item.slides}" title="see slides">💻</a>` : '';
+const eventTpl = item => item.link ? ` <a href="item.link">${item.event}</a>` : ` ${item.event}`;
+
 const markerTpl = item => `<div class="marker">
 <h3>${item.venue.name}</h3>
 <h4>${item.venue.city}, ${item.venue.countryCode}</h4>
 <div>
   <ul>${item.presentations.map(p =>
-    `<li><i>${p.title}</i> at ${p.event}, ${p.date}</li>`
-  )}</ul>
+    `<li><i>${p.title}</i> at ${eventTpl(p)}, ${p.date} ${videoTpl(p)} ${slideTpl(p)}</li>`
+  ).join('')}</ul>
 </div>
 </div>`;
 
