@@ -1,6 +1,5 @@
 {
   "scripts": {
-    "presentations": "cd data && node merge",
     "bundle": "browserify data/page-archive.js -o assets/js/page-archive.js"
   },
   "devDependencies": {

@@ -3,7 +3,6 @@
 const $map = document.getElementById('map-canvas');
 const latlng = (lat, lng) => new google.maps.LatLng(lat, lng);
 
-// const events = require('./data.json');
 const presentations = require('./presentations.json');
 const venues = require('./venues.json');
 
