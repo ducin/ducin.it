@@ -29,7 +29,7 @@ for (venueId in venueAggregator) {
 
 const videoTpl = item => item.video ? ` <a class="video" href="${item.video}" title="see video">📹</a>` : '';
 const slideTpl = item => item.slides ? ` <a class="slides" href="${item.slides}" title="see slides">💻</a>` : '';
-const eventTpl = item => item.link ? ` <a href="item.link">${item.event}</a>` : ` ${item.event}`;
+const eventTpl = item => item.link ? ` <a href="${item.link}">${item.event}</a>` : ` ${item.event}`;
 
 const markerTpl = item => `<div class="marker">
 <h3>${item.venue.name}</h3>
