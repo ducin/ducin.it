@@ -48,29 +48,32 @@ const initMap = () => {
   });
   let theOnlyWindow = null;
 
-  function addMarker(item) {
-    const marker = new google.maps.Marker({
-      position: latlng(item.venue.latitude, item.venue.longitude),
-      map: map,
-      title: item.title
-    });
-
-    if (item.venue.latitude && item.venue.longitude) {
-      const infoWindow = new google.maps.InfoWindow({
-        content: markerTpl(item)
+  function addMarker(item, timeout) {
+    setTimeout(() => {
+      const marker = new google.maps.Marker({
+        position: latlng(item.venue.latitude, item.venue.longitude),
+        map: map,
+        title: item.title,
+        animation: google.maps.Animation.DROP
       });
 
-      marker.addListener('mouseover', function() {
-        if (theOnlyWindow) {
-          theOnlyWindow.close();
-        }
-        infoWindow.open(map, marker);
-        theOnlyWindow = infoWindow;
-      });
-    }
+      if (item.venue.latitude && item.venue.longitude) {
+        const infoWindow = new google.maps.InfoWindow({
+          content: markerTpl(item)
+        });
+
+        marker.addListener('mouseover', function() {
+          if (theOnlyWindow) {
+            theOnlyWindow.close();
+          }
+          infoWindow.open(map, marker);
+          theOnlyWindow = infoWindow;
+        });
+      }
+    }, timeout);
   };
 
-  venuePresentations.forEach(addMarker);
+  venuePresentations.forEach((v, idx) => addMarker(v, 500 + idx*150));
 }
 
 initMap();
