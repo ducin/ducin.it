@@ -3821,3 +3821,16 @@
 		display: block;
 		font-style: normal;
 	}
+
+	blockquote .language {
+		display: block;
+		font-style: normal;
+	}
+
+	blockquote .language a {
+		cursor: pointer;
+	}
+
+	blockquote hidden {
+		display: none;
+	}

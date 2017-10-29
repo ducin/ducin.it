@@ -3,8 +3,8 @@
 const $map = document.getElementById('map-canvas');
 const latlng = (lat, lng) => new google.maps.LatLng(lat, lng);
 
-const presentations = require('./presentations.json');
-const venues = require('./venues.json');
+const presentations = require('../data/presentations.json');
+const venues = require('../data/venues.json');
 
 const venueAggregator = presentations.reduce((aggr, event) => {
   if (!aggr[event.venueId]){
