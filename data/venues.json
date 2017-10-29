@@ -121,6 +121,13 @@
     "latitude": 52.2519797,
     "longitude": 20.997717599999987
   },
+  "theplace-warsaw": {
+    "city": "Warsaw",
+    "countryCode": "PL",
+    "name": "The Place / Warsaw Spire",
+    "latitude": 52.2321118,
+    "longitude": 20.9842432
+  },
   "cent3-warsaw": {
     "city": "Warsaw",
     "countryCode": "PL",

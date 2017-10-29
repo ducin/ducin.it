@@ -1,85 +1,4 @@
 (function e(t,n,r){function s(o,u){if(!n[o]){if(!t[o]){var a=typeof require=="function"&&require;if(!u&&a)return a(o,!0);if(i)return i(o,!0);var f=new Error("Cannot find module '"+o+"'");throw f.code="MODULE_NOT_FOUND",f}var l=n[o]={exports:{}};t[o][0].call(l.exports,function(e){var n=t[o][1][e];return s(n?n:e)},l,l.exports,e,t,n,r)}return n[o].exports}var i=typeof require=="function"&&require;for(var o=0;o<r.length;o++)s(r[o]);return s})({1:[function(require,module,exports){
-// full jsfiddle demo: http://jsfiddle.net/ug4trmy1/
-
-const $map = document.getElementById('map-canvas');
-const latlng = (lat, lng) => new google.maps.LatLng(lat, lng);
-
-const presentations = require('./presentations.json');
-const venues = require('./venues.json');
-
-const venueAggregator = presentations.reduce((aggr, event) => {
-  if (!aggr[event.venueId]){
-    aggr[event.venueId] = {
-      venue: venues[event.venueId],
-      presentations: []
-    };
-  }
-  let item = Object.assign({}, event);
-  delete item.venueId;
-  aggr[event.venueId].presentations.push(item);
-  return aggr;
-}, {});
-
-const venuePresentations = [];
-for (venueId in venueAggregator) {
-  if (venueAggregator.hasOwnProperty(venueId)){
-    venuePresentations.push(venueAggregator[venueId]);
-  }
-}
-
-const videoTpl = item => item.video ? ` <a class="video" href="${item.video}" title="see video">📹</a>` : '';
-const slideTpl = item => item.slides ? ` <a class="slides" href="${item.slides}" title="see slides">💻</a>` : '';
-const eventTpl = item => item.link ? ` <a href="${item.link}">${item.event}</a>` : ` ${item.event}`;
-
-const markerTpl = item => `<div class="marker">
-<h3>${item.venue.name}</h3>
-<h4>${item.venue.city}, ${item.venue.countryCode}</h4>
-<div>
-  <ul>${item.presentations.map(p =>
-    `<li><i>${p.title}</i> at ${eventTpl(p)}, ${p.date} ${videoTpl(p)} ${slideTpl(p)}</li>`
-  ).join('')}</ul>
-</div>
-</div>`;
-
-const initMap = () => {
-  const map = new google.maps.Map($map, {
-    zoom: 4,
-    center: latlng(52, 10),
-    mapTypeId: google.maps.MapTypeId.ROADMAP
-  });
-  let theOnlyWindow = null;
-
-  function addMarker(item, timeout) {
-    setTimeout(() => {
-      const marker = new google.maps.Marker({
-        position: latlng(item.venue.latitude, item.venue.longitude),
-        map: map,
-        title: item.title,
-        animation: google.maps.Animation.DROP
-      });
-
-      if (item.venue.latitude && item.venue.longitude) {
-        const infoWindow = new google.maps.InfoWindow({
-          content: markerTpl(item)
-        });
-
-        marker.addListener('mouseover', function() {
-          if (theOnlyWindow) {
-            theOnlyWindow.close();
-          }
-          infoWindow.open(map, marker);
-          theOnlyWindow = infoWindow;
-        });
-      }
-    }, timeout);
-  };
-
-  venuePresentations.forEach((v, idx) => addMarker(v, 500 + idx*150));
-}
-
-initMap();
-
-},{"./presentations.json":2,"./venues.json":3}],2:[function(require,module,exports){
 module.exports=[
   {
     "title": "Continous Integration with git",
@@ -446,10 +365,29 @@ module.exports=[
     "slides": "http://slides.com/ducin/5-architectures-of-asynchronous-javascript",
     "date": "2017.09.07",
     "venueId": "nobelberget-stockholm"
+  }, {
+    "title": "5 architectures of Asynchronous JavaScript",
+    "event": "WJUG (Warsaw Java User Group) #216",
+    "link": "https://www.meetup.com/Warszawa-JUG/events/243929228/",
+    "slides": "http://slides.com/ducin/5-architectures-of-asynchronous-javascript",
+    "date": "2017.10.10",
+    "venueId": "mimuw-warsaw"
+  }, {
+    "title": "5 architectures of Asynchronous JavaScript (1/2)",
+    "event": "WarsawJS #38",
+    "slides": "http://slides.com/ducin/5-architectures-of-asynchronous-javascript",
+    "date": "2017.10.11",
+    "venueId": "theplace-warsaw"
+  }, {
+    "title": "5 architectures of Asynchronous JavaScript (2/2)",
+    "event": "WarsawJS #40",
+    "slides": "http://slides.com/ducin/5-architectures-of-asynchronous-javascript",
+    "date": "2017.12.13",
+    "venueId": "theplace-warsaw"
   }
 ]
 
-},{}],3:[function(require,module,exports){
+},{}],2:[function(require,module,exports){
 module.exports={
   "online": {
     "name": "online"
@@ -573,6 +511,13 @@ module.exports={
     "latitude": 52.2519797,
     "longitude": 20.997717599999987
   },
+  "theplace-warsaw": {
+    "city": "Warsaw",
+    "countryCode": "PL",
+    "name": "The Place / Warsaw Spire",
+    "latitude": 52.2321118,
+    "longitude": 20.9842432
+  },
   "cent3-warsaw": {
     "city": "Warsaw",
     "countryCode": "PL",
@@ -659,4 +604,85 @@ module.exports={
   }
 }
 
-},{}]},{},[1]);
+},{}],3:[function(require,module,exports){
+// full jsfiddle demo: http://jsfiddle.net/ug4trmy1/
+
+const $map = document.getElementById('map-canvas');
+const latlng = (lat, lng) => new google.maps.LatLng(lat, lng);
+
+const presentations = require('../data/presentations.json');
+const venues = require('../data/venues.json');
+
+const venueAggregator = presentations.reduce((aggr, event) => {
+  if (!aggr[event.venueId]){
+    aggr[event.venueId] = {
+      venue: venues[event.venueId],
+      presentations: []
+    };
+  }
+  let item = Object.assign({}, event);
+  delete item.venueId;
+  aggr[event.venueId].presentations.push(item);
+  return aggr;
+}, {});
+
+const venuePresentations = [];
+for (venueId in venueAggregator) {
+  if (venueAggregator.hasOwnProperty(venueId)){
+    venuePresentations.push(venueAggregator[venueId]);
+  }
+}
+
+const videoTpl = item => item.video ? ` <a class="video" href="${item.video}" title="see video">📹</a>` : '';
+const slideTpl = item => item.slides ? ` <a class="slides" href="${item.slides}" title="see slides">💻</a>` : '';
+const eventTpl = item => item.link ? ` <a href="${item.link}">${item.event}</a>` : ` ${item.event}`;
+
+const markerTpl = item => `<div class="marker">
+<h3>${item.venue.name}</h3>
+<h4>${item.venue.city}, ${item.venue.countryCode}</h4>
+<div>
+  <ul>${item.presentations.map(p =>
+    `<li><i>${p.title}</i> at ${eventTpl(p)}, ${p.date} ${videoTpl(p)} ${slideTpl(p)}</li>`
+  ).join('')}</ul>
+</div>
+</div>`;
+
+const initMap = () => {
+  const map = new google.maps.Map($map, {
+    zoom: 4,
+    center: latlng(52, 10),
+    mapTypeId: google.maps.MapTypeId.ROADMAP
+  });
+  let theOnlyWindow = null;
+
+  function addMarker(item, timeout) {
+    setTimeout(() => {
+      const marker = new google.maps.Marker({
+        position: latlng(item.venue.latitude, item.venue.longitude),
+        map: map,
+        title: item.title,
+        animation: google.maps.Animation.DROP
+      });
+
+      if (item.venue.latitude && item.venue.longitude) {
+        const infoWindow = new google.maps.InfoWindow({
+          content: markerTpl(item)
+        });
+
+        marker.addListener('mouseover', function() {
+          if (theOnlyWindow) {
+            theOnlyWindow.close();
+          }
+          infoWindow.open(map, marker);
+          theOnlyWindow = infoWindow;
+        });
+      }
+    }, timeout);
+  };
+
+  venuePresentations.forEach((v, idx) => addMarker(v, 500 + idx*150));
+}
+
+initMap();
+
+},{"../data/presentations.json":1,"../data/venues.json":2}]},{},[3]);

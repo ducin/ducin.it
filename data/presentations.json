@@ -364,5 +364,24 @@
     "slides": "http://slides.com/ducin/5-architectures-of-asynchronous-javascript",
     "date": "2017.09.07",
     "venueId": "nobelberget-stockholm"
+  }, {
+    "title": "5 architectures of Asynchronous JavaScript",
+    "event": "WJUG (Warsaw Java User Group) #216",
+    "link": "https://www.meetup.com/Warszawa-JUG/events/243929228/",
+    "slides": "http://slides.com/ducin/5-architectures-of-asynchronous-javascript",
+    "date": "2017.10.10",
+    "venueId": "mimuw-warsaw"
+  }, {
+    "title": "5 architectures of Asynchronous JavaScript (1/2)",
+    "event": "WarsawJS #38",
+    "slides": "http://slides.com/ducin/5-architectures-of-asynchronous-javascript",
+    "date": "2017.10.11",
+    "venueId": "theplace-warsaw"
+  }, {
+    "title": "5 architectures of Asynchronous JavaScript (2/2)",
+    "event": "WarsawJS #40",
+    "slides": "http://slides.com/ducin/5-architectures-of-asynchronous-javascript",
+    "date": "2017.12.13",
+    "venueId": "theplace-warsaw"
   }
 ]
