@@ -3816,6 +3816,10 @@
 		background-color: #1d242a;
 	}
 
+	blockquote {
+		margin-bottom: 6em;
+	}
+
 	blockquote .author {
 		text-align: right;
 		display: block;
@@ -3833,4 +3837,14 @@
 
 	blockquote hidden {
 		display: none;
+	}
+
+	/* CSS filter based on: https://codepen.io/paulcham/pen/QKbpLb */
+
+	.partners img {
+		filter: contrast(0) sepia(100%) hue-rotate(120deg) brightness(1.2) saturate(0.5);
+	}
+
+	.partners img:hover {
+		filter: none;
 	}
