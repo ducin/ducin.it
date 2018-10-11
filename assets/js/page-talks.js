@@ -1,4 +1,5 @@
 var slides = {
+    "rxjs-streams": "slides.com/ducin/everything-is-a-stream",
     "5-architectures": "slides.com/ducin/5-architectures-of-asynchronous-javascript",
     "async-await": "slides.com/ducin/async-functions-awaiting-you",
     "typescript": "slides.com/ducin/javascript-plus-java-equals-typescript",
