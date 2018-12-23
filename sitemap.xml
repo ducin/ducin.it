@@ -25,6 +25,11 @@
   <priority>0.80</priority>
 </url>
 <url>
+  <loc>http://ducin.it/videos.html</loc>
+  <changefreq>weekly</changefreq>
+  <priority>0.80</priority>
+</url>
+<url>
   <loc>http://ducin.it/archive.html</loc>
   <changefreq>weekly</changefreq>
   <priority>0.80</priority>
