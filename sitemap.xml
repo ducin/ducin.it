@@ -29,6 +29,11 @@
   <changefreq>weekly</changefreq>
   <priority>0.80</priority>
 </url>
+<url>
+  <loc>http://ducin.it/typescript-anti-patterns</loc>
+  <changefreq>weekly</changefreq>
+  <priority>0.80</priority>
+</url>
 
 
 </urlset>

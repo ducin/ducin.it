@@ -28,6 +28,7 @@ document.body.classList.add('is-loading');
 		// Disable animations/transitions until the page has loaded.
 			// $body.addClass('is-loading');
 
+			hljs.initHighlightingOnLoad();
 			$window.on('load', function() {
 				window.setTimeout(function() {
 					$body.removeClass('is-loading');

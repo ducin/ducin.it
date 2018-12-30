@@ -1460,7 +1460,7 @@
 
 	strong, b {
 		color: #fff;
-		font-weight: 600;
+		font-weight: 700;
 	}
 
 	em, i {
@@ -1478,6 +1478,11 @@
 		line-height: 1em;
 		margin: 0 0 1em 0;
 		text-transform: uppercase;
+	}
+
+	h1 code, h2 code, h3 code, h4 code, h5 code, h6 code {
+		color: inherit;
+		text-transform: none;
 	}
 
 		h1 a, h2 a, h3 a, h4 a, h5 a, h6 a {
@@ -1579,6 +1584,7 @@
 			line-height: 1.75em;
 			padding: 1em 1.5em;
 			overflow-x: auto;
+			border-radius: 10px;
 		}
 
 	.align-left {
@@ -2980,8 +2986,9 @@
 				border-color: #dfdfdf;
 			}
 
-			.wrapper.style5 code {
-				background: rgba(0, 0, 0, 0.0375);
+			.wrapper.style5 pre code {
+				/* background: rgba(0, 0, 0, 0.0375); */
+				font-size: 18px;
 			}
 
 			.wrapper.style5 header p {
@@ -3641,6 +3648,10 @@
 		background-repeat: no-repeat;
 		background-size: cover;
 		text-align: center;
+	}
+
+	#main > header.post-antipatterns {
+		background: url("../../images/broken-plate.jpg") !important
 	}
 
 		#main > header h2 {
