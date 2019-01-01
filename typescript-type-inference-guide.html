@@ -91,7 +91,7 @@
 
 
 <h1 id="typescript-type-inference-guide">TypeScript Type Inference Guide</h1>
-<p>New Year is a good opportunity to start a new topic - and here I go with the first post of a whole serie, where I
+<p>New Year is a good opportunity to start a initiative - and here I go with the first post of a whole serie, where I
 	explain mechanics of TypeScript and my experience of using it for over 4 years in big commercial projects (inlcuding
 	sectors: finance, web analytics, ITIL, OSS).</p>
 <p>After reading this post, you&#39;ll learn:</p>
@@ -101,22 +101,24 @@
 	<li>what are key strengths and limitations of type inference</li>
 	<li>good practices in real world projects</li>
 </ul>
-<h2>Table of Content:</h2>
-<ul class="toc">
-	<li><a href="#motivation">motivation</a></li>
+<p>Table of Content:</p>
+<ul>
 	<li><a href="#implicit-vs-explicit">implicit vs explicit</a></li>
 	<li><a href="#inference-basics">inference basics</a>
 		<ul>
 			<li><a href="#variable-type-inference">variable type inference</a></li>
 			<li><a href="#expression-type-inference">expression type inference</a></li>
 			<li><a href="#function-return-type-inference">function return type inference</a></li>
+			<li><a href="#compiler-flags">compiler flags</a></li>
 		</ul>
 	</li>
 	<li><a href="#limitations">limitations</a>
 		<ul>
-			<li><a href="#function-parameters-arent-inferred">function parameters aren&#39;t inferred</a></li>
-			<li><a href="#asynchronous-operations-arent-inferred">asynchronous operations aren&#39;t inferred</a></li>
-			<li><a href="#functional-composition-isnt-inferred">functional composition isn&#39;t inferred</a></li>
+			<li><a href="#function-parameters-arent-inferred-limitation">function parameters aren&#39;t inferred (limitation)</a></li>
+			<li><a href="#asynchronous-operations-arent-inferred-limitation">asynchronous operations aren&#39;t inferred
+					(limitation)</a></li>
+			<li><a href="#functional-composition-isnt-inferred-limitation">functional composition isn&#39;t inferred
+					(limitation)</a></li>
 		</ul>
 	</li>
 	<li><a href="#example-data-structure">example data structure</a></li>
@@ -127,13 +129,13 @@
 	<li><a href="#summary">summary</a></li>
 </ul>
 <h2 id="motivation">motivation</h2>
-<p><strong>Type Inference is the most important feature we should master, as we progress with using TypeScript</strong>.
-	TS is not only about the different types we can use and the problems they address, but also about the style of our
-	code - and how much will TS codebase differ from its direct JS output.</p>
+<p><strong>Type Inference is one of the most important features we should master, as we progress with using TypeScript</strong>.
+	TS is not only about the different types we can declare - and the problems they address. It&#39;s also about the style
+	of our code - and how much will TS codebase differ from its direct JS output.</p>
 <p>One of the most useful resources when getting started with TypeScript is the <a href="https://www.typescriptlang.org/docs">official
 		handbook</a>. However, it doesn&#39;t go too deep into <a href="https://www.typescriptlang.org/docs/handbook/type-inference.html">type
-		inference</a> and doesn&#39;t provide practical tips on how to leverage it, I decided to cover the topic. Anyway, you
-	should definitely check out the handbook.</p>
+		inference</a> and doesn&#39;t provide practical tips on how to leverage it, and so I decided to cover the topic.
+	Anyway, you should definitely check out the handbook.</p>
 <h2 id="implicit-vs-explicit">implicit vs explicit</h2>
 <p>Whenever we design a system or an API, there are lots of questions we should consider upfront. Some of the questions
 	relate to the domain (the mechanics of the business we&#39;re working on), other ones just characterize our system and
@@ -142,8 +144,8 @@
 	and many, many more. In case of TypeScript, <strong>we choose whether type definitions used throughout our codebase
 		should be rather <em>implicit</em> or <em>explicit</em></strong>:</p>
 <ul>
-	<li><em>implicit</em> - is what we read from the context. The code is more concise, but sometimes takes more time to
-		reason about</li>
+	<li><em>implicit</em> - is what we read from the context, hidden between the lines. The code is more concise, but
+		sometimes takes more time to reason about</li>
 	<li><em>explicit</em> - is plainly written down. The code is more verbose, but leaves less place for doubts</li>
 </ul>
 <p>In TypeScript, <strong>explicit typing</strong> is just declaring what is the type of a variable, such as:</p>
@@ -165,13 +167,14 @@ const numbers = [1,2,3] // inferred as number[] (implicit)</code></pre>
 <pre><code class="language-ts">let myString // inferred as any
 myString = 123 // not what you expected, huh?</code></pre>
 <p><strong>When inferring variable types, TypeScript takes into account only the line where the variable is declared</strong>.
-	Other lines, where you might assign some attributes are ignored. Only the first line, no exceptions.</p>
+	Other lines, where you might assign some attributes are ignored. Only the first line, no exceptions. We&#39;ll get
+	back to so called <em>implicit <code>any</code></em> and the TS compiler flags.</p>
 <p>One important thing to note here is the object literal, specifically, empty object literal:</p>
 <pre><code class="language-ts">const obj = {}</code></pre>
 <p>The inferred type is <code>{}</code>. On one hand, JavaScript&#39;s native object is a <a href="https://en.wikipedia.org/wiki/Associative_array"><em>dictionary</em></a>
-	(string -&gt; <em>value_) which allows to assign any string key to it. On the other hand, there are no _predefined</em>
-	attributes (known upfront), as we have in OOP class fields. As a result, with above declaration we can access a field
-	with an array notation, but cannot access an arbitrary key:</p>
+	(string -&gt; VALUE_TYPE) which allows to assign any string key to it. On the other hand, there are no
+	&quot;predefined&quot; attributes (known upfront), as we have in OOP class fields. As a result, with above declaration
+	we can access a field with an array notation, but cannot access an arbitrary key:</p>
 <pre><code class="language-ts">const obj = {} // inferred as {}
 obj[&#39;hello&#39;] = &quot;value&quot; // OK
 obj.hello = &quot;value&quot; // FAIL! hello doesn&#39;t exist on {}</code></pre>
@@ -179,15 +182,21 @@ obj.hello = &quot;value&quot; // FAIL! hello doesn&#39;t exist on {}</code></pre
 	like <code>{ hello: &quot;value&quot; }</code>). Explicit type might look like:</p>
 <pre><code class="language-ts">type ObjWithFields = { hello?: string }
 const obj: ObjWithFields = {}</code></pre>
-<p>The optional field (<code>?</code>) is required in above snippet, since there is a point in time when the oibject
-	doesn&#39;t have the field defined. In other words, the object is allowed not to have this value defined.</p>
-<p>This will be important when be define the type of <code>Array.prototype.reduce</code> later on.</p>
+<p>The optional field (<code>?</code>) is required in above snippet, since there is a point in time when the object <em>doesn&#39;t
+		have the field defined</em> and it&#39;s logically ok in your application. If it&#39;s logically not ok, you should
+	remove the <code>?</code> and update your codebase so that there&#39;s no such situation when the value is missing
+	(and TS will help you find all of these). Basically, it&#39;s about <a href="https://en.wikipedia.org/wiki/Predicate_(grammar)#In_modern_theories_of_syntax_and_grammar">satisfying
+		the predicates within your code</a>.</p>
+<p>This will be important when be define the return type of <code>Array.prototype.reduce</code> later on.</p>
 <h4 id="expression-type-inference">expression type inference</h4>
 <p>Using any expression we&#39;ve got in our program, other expressions and variables will calculate their type upon
 	it:</p>
 <pre><code class="language-ts">const bandNameDraft = bandName // inferred as typeof bandName
                                // string in this case</code></pre>
+<p>This can be applied multiple times within our codebase, thus creating a directed of expressions within our codebase.
+	Cool and easy to use.</p>
 <h4 id="function-return-type-inference">function return type inference</h4>
+<p>Let&#39;s take a look at this tiny function:</p>
 <pre><code class="language-ts">const hello = (firstName, lastName) =&gt;
   `Hi there, ${firstName} ${lastName}!`
 
@@ -197,29 +206,44 @@ const obj: ObjWithFields = {}</code></pre>
 	same, if we used <code>firstName + &quot; &quot;</code> etc, since it casts the expression down to a string). So <code>hello</code>
 	is of type:</p>
 <pre><code class="language-ts">(firstName: any, lastName: any) =&gt; string</code></pre>
+<h4 id="compiler-flags">compiler flags</h4>
+<p>One of the bad practices TypeScript developers follow is ignoring the <a href="https://www.typescriptlang.org/docs/handbook/compiler-options.html"><code>--noImplicitAny</code>
+		and <code>--noImplicitThis</code> compiler flags</a> for TypeScript compiler:</p>
+<ul>
+	<li><code>--noImplicitAny</code> will complain about each line where TS cannot infer anything better than <code>any</code>.
+		Usually that&#39;s either lines like <code>var x;</code> or function parameters left alone.</li>
+	<li>similarly, <code>--noImplicitThis</code> will complain about each line where we use the <code>this</code>
+		reference within a function and TypeScript has no way to infer what it is precisely, leaving it as <code>any</code>,
+		which open our codebase to nasty bugs.</li>
+</ul>
+<p>In both cases we open our codebase for bugs. Always remember to set these flags in <code>tsconfig.json</code>. It
+	won&#39;t take you much time to declare the types (or help type inference work), but it&#39;ll surely save you from
+	many painful moments!</p>
 <h2 id="limitations">limitations</h2>
 <p>It&#39;s important to highlight that there are limitations to this language feature. The three most significant ones
 	are:</p>
-<h4 id="function-parameters-aren-t-inferred">function parameters aren&#39;t inferred</h4>
+<h4 id="function-parameters-aren-t-inferred-limitation-">function parameters aren&#39;t inferred (limitation)</h4>
 <p>As we&#39;ve seen in the last snippet above, <strong>function parameters are never inferred. Never. Again, no
 		exceptions. <code>any</code> is attached, if no explicit declaration.</strong> This surely is a limitation, but if we
 	wanted TS to infer what is the function parameter type, we&#39;d have to go through all the places where the function
 	is called and analyze the invocations. That&#39;s doable, of course, and we would get a list of types of all
 	expressions passed as arguments to the function. But actually, the philosophy behind TypeScript is slightly different,
 	more kind of <em>bottom-up</em> approach. When we declare a function, we restrict how it can be used, so that all
-	invocations are strictly checked if they&#39;re correct. We could say we introduce a checkpoint. So on one hand,
-	it&#39;s a different approach to solve the static typing problem, and on the other hand, it would introduce lots of
-	complexity and potentially slow down the compilation. As for now, TypeScript team decided not to introduce inferring
-	function parameters inference (contrary to <a href="http://flowtype.org">Flowtype (BTW, hence the name <em>flow</em>
-		LOL)</a>).</p>
-<p>If we want to have strict types defined for function parameters, there&#39;s no way around it, we simply have to
-	declare them explicitly, no inference here:</p>
+	invocations are strictly checked if they&#39;re correct. We could say that when we type function parameters, we
+	introduce a checkpoint.</p>
+<p>So on one hand, no inference over function params is a different approach to solve the static typing problem,
+	compared to analyzing all invocations and treating them as the base for determining function params. And on the other
+	hand, it would introduce lots of complexity and potentially slow down the compilation. As for now, TypeScript team
+	decided not to introduce inferring function parameters inference (contrary to <a href="http://flowtype.org">Flowtype
+		(BTW, hence the name <em>flow</em> LOL)</a>).</p>
+<p><strong>If we want to have strict types defined for function parameters, there&#39;s no way around it, we simply
+		have to declare them explicitly</strong>, no inference here:</p>
 <pre><code class="language-ts">(firstName: string, lastName: string) =&gt; string</code></pre>
 <p>Not a big effort, as you can see.</p>
-<h4 id="asynchronous-operations-aren-t-inferred">asynchronous operations aren&#39;t inferred</h4>
+<h4 id="asynchronous-operations-aren-t-inferred-limitation-">asynchronous operations aren&#39;t inferred (limitation)</h4>
 <p>... because there&#39;s no way to do it! When TypeScript is compiled, JavaScript output is produced - and it&#39;s
-	JS that is executed in runtime. There&#39;s no TypeScript in runtime. So if there&#39;s no TS, there are also no types
-	and no type checks in runtime. Can you think of any way TypeScript could infer what is the shapre of the JSONs
+	JS that is executed in runtime. There&#39;s no TypeScript in runtime anymore. So if there&#39;s no TS, there are also
+	no TS types and no TS type checks. Can you think of any way TypeScript could infer what is the shape of the JSONs
 	we&#39;re about to receive from a remote system, as below?</p>
 <pre><code class="language-ts">http.get(&#39;https://my.api.com/users&#39;) // return a promise
   .then(result =&gt; consume(result))</code></pre>
@@ -231,9 +255,17 @@ const obj: ObjWithFields = {}</code></pre>
 
 http.get(&#39;https://my.api.com/users&#39;) // return a promise
   .then((result: User[]) =&gt; consume(result))</code></pre>
-<p>TypeScript will take care on how do we use the <code>result</code> value within our code, for instance, following
+<p>or, preferably, wrap it in a function just to solve the problem once for all invocations:</p>
+<pre><code class="language-ts">// specialized promise-returning function
+const getUsers = (): Promise&lt;User[]&gt; =&gt;
+  http.get(&#39;https://my.api.com/users&#39;)
+
+// and usage:
+getUsers().then((result: User[]) =&gt; consume(result))</code></pre>
+<p>TypeScript will take care about how do we use the <code>result</code> value within our code, for instance, following
 	line would fail:</p>
-<pre><code class="language-ts">  .then((result: User[]) =&gt; result.map(u =&gt; u.name)) // FAIL! name doesn&#39;t exist on User
+<pre><code class="language-ts">promise
+  .then((result: User[]) =&gt; result.map(u =&gt; u.name)) // FAIL! name doesn&#39;t exist on User
   .then((result: string[]) =&gt; consume(result))</code></pre>
 <p>Additionally, an interesting question is if TypeScript is going to type check the result in the runtime, by
 	injecting additional code into JavaScript output (raising an Error if the response shape is not as expected). This
@@ -242,20 +274,20 @@ http.get(&#39;https://my.api.com/users&#39;) // return a promise
 <ul>
 	<li>should a client application (the one sending the request) be <strong>also</strong> a tester for the server that it
 		connects to? Shouldn&#39;t the server be responsible for testing itself?</li>
-	<li>TS defines fundamental rules: &quot;<em>valid JavaScript code is valid TypeScript code_&quot; and the other way
-			round: &quot;_TypeScript is just JavaScript + type definitions_&quot;. The consequence of the latter is that TS
-			output is just removing types and here you go your JavaScript. <strong>No additional output</strong> (except for
-			transpilation such as ES6 -&gt; ES5, which has to be done anyway, same with Babel). Thanks to it, getting started
-			with TS (not becoming an expert) is very easy, since the difference between JS and TS is only types. Going back to
-			webservices type checking - if async responses type checking would be transpiled into the JS output, this rule would
-			be violated, i.e. JS output would be _something more than</em> just TS without types. And that (the simplicity) was
-		the point.</li>
+	<li>TS defines fundamental rules: <em>&quot;valid JavaScript code is valid TypeScript code&quot;</em> and the other
+		way round: <em>&quot;TypeScript is just JavaScript + type definitions&quot;</em>. The consequence of the latter is
+		that TS output is just removing types and here you go your JavaScript. <strong>No additional output</strong> (except
+		for transpilation such as ES6 -&gt; ES5, which has to be done anyway, same with Babel). Thanks to it, getting started
+		with TS (not becoming an expert) is very easy, since the difference between JS and TS is only types. Going back to
+		webservices type checking - if async responses type checking would be transpiled into the JS output, this rule would
+		be violated, i.e. JS output would be <em>something more than</em> just TS without types. And that (the simplicity)
+		was the point.</li>
 </ul>
 <p>And so the TypeScript team decided not to do that.</p>
-<h4 id="functional-composition-isn-t-inferred">functional composition isn&#39;t inferred</h4>
+<h4 id="functional-composition-isn-t-inferred-limitation-">functional composition isn&#39;t inferred (limitation)</h4>
 <p>Finally, the limitation tht hits many FP-based implementations is that utility functions such as <code>compose</code>
 	and <code>pipe</code> are not correctly typed out of the box. It&#39;s doable, however, it requires a hacky
-	workaround.\</p>
+	workaround.</p>
 <p>In short, the <code>compose</code> operator (or <code>pipe</code>, the logic is the same, but the direction might be
 	reverse according to some naming conventions) works the same as Unix-style pipe. That is, output of fn1 becomes the
 	input of fn2, output of fn2 becomes input of fn3, etc. So there&#39;s <em>a value</em> that travels through a <em>pipe</em>
@@ -424,8 +456,8 @@ genreMap.psychedelic // FAIL! psychedelic doesn&#39;t exist on {}</code></pre>
 	enough). At the end of the article we&#39;ll cover how man places shall we <em>hammer</em> with explicit types and
 	which ones are good to left inferred automatically.</p>
 <h2 id="flexibility">flexibility</h2>
-<p>One of the strongest points against TypeScript, stated by JavaScript developers, is that &quot;_writing types down
-	take time_&quot;. Well, sure it does, JavaScript doesn&#39;t support static typing so that this <strong>is</strong>
+<p>One of the strongest points against TypeScript, stated by JavaScript developers, is that <em>&quot;writing types
+		down take time&quot;</em>. Well, sure it does, JavaScript doesn&#39;t support static typing so that this <strong>is</strong>
 	some extra cost. Whenever we choose to use TypeScript or not, we have to take into account that <strong>software
 		changes over time and the code that we just wrote will be different after few months or few years. And the benefits
 		of TypeScript is not necessarily for today me, but for all the people who would work on my code</strong>, including
@@ -465,7 +497,9 @@ genreMap.psychedelic // FAIL! psychedelic doesn&#39;t exist on {}</code></pre>
 	<li>We should keep a good balance between what we type explicitly and implicitly. Thanks to it, refactors are cheaper
 		and more predictable.</li>
 	<li>Too much type inference makes too much types changes, potentially, leaving us unaware of how far changes go.</li>
+	<li>Finally, set at least the <code>--noImplicitAny</code> and <code>--noImplicitThis</code> compiler flags.</li>
 </ul>
+
 
 
 
@@ -493,7 +527,7 @@ genreMap.psychedelic // FAIL! psychedelic doesn&#39;t exist on {}</code></pre>
 								<script>
 									var disqus_config = function () {
 									this.page.url = 'http://ducin.it';
-									this.page.identifier = 'ducin-it'; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+									this.page.identifier = 'ducin-it';
 									};
 									(function () { // DON'T EDIT BELOW THIS LINE
 										var d = document, s = d.createElement('script');
