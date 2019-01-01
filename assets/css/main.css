@@ -1480,11 +1480,6 @@
 		text-transform: uppercase;
 	}
 
-	h1 code, h2 code, h3 code, h4 code, h5 code, h6 code {
-		color: inherit;
-		text-transform: none;
-	}
-
 		h1 a, h2 a, h3 a, h4 a, h5 a, h6 a {
 			color: inherit;
 			text-decoration: none;
@@ -3648,10 +3643,6 @@
 		background-repeat: no-repeat;
 		background-size: cover;
 		text-align: center;
-	}
-
-	#main > header.post-antipatterns {
-		background: url("../../images/broken-plate.jpg") !important
 	}
 
 		#main > header h2 {

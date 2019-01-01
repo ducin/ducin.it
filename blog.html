@@ -1,7 +1,7 @@
 <!DOCTYPE HTML>
 <html lang="en">
 	<head>
-    <title>Tomasz Ducin - archive</title>
+    <title>Tomasz Ducin blog</title>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -14,6 +14,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <!--[if lte IE 8]><script src="assets/js/ie/html5shiv.js"></script><![endif]-->
     <link rel="stylesheet" href="assets/css/main.css" />
+    <link rel="stylesheet" href="assets/css/extended.css" />
     <!--[if lte IE 8]><link rel="stylesheet" href="assets/css/ie8.css" /><![endif]-->
     <!--[if lte IE 9]><link rel="stylesheet" href="assets/css/ie9.css" /><![endif]-->
 	</head>
@@ -56,9 +57,28 @@
 				<!-- Main -->
 					<article id="main">
 						<header>
-							<h2>Talks Archive</h2>
+							<h2>Blog</h2>
 						</header>
-						<div id="map-canvas"></div>
+						<section class="wrapper style5">
+							<div class="inner">
+
+								<h2>Mastering TypeScript:</h2>
+
+								<ul class="blogposts">
+									<li>
+										<a href="/typescript-type-inference-guide">
+											<h3 class="blogpost-link">TypeScript Type Inference Guide</h3>
+											<p class="blogpost-headline">
+												Type Inference is the most important feature we should master, as we progress with using TypeScript. It allows us to keep the type safety of our codebase, and declare types less. Less investment cost, same profit.
+											</p>
+										</a>
+									</li>
+									<!-- <li><a href="/typescript-anti-patterns">TypeScript Anti-patterns</a></li> -->
+								</ul>
+
+							</div>
+
+						</section>
 					</article>
 
 				<!-- Footer -->
@@ -90,28 +110,6 @@
 			<!--[if lte IE 8]><script src="assets/js/ie/respond.min.js"></script><![endif]-->
 			<script src="assets/js/main.js"></script>
 
-			<script src="http://maps.googleapis.com/maps/api/js?key=AIzaSyDoUw9bxCnFvIAayyM4IQVSlB99RzoVajg"></script>
-			<script src="assets/js/page-archive.js"></script>
-			<!-- <script async defer src="http://maps.googleapis.com/maps/api/js?key=AIzaSyDoUw9bxCnFvIAayyM4IQVSlB99RzoVajg&callback=initMap"></script> -->
-
-<style>
-body, html {
-  height: 100%;
-  width: 100%;
-}
-
-#map-canvas {
-  height: 500px;
-  width: 100%;
-}
-
-.marker h1, .marker h2, .marker h3, .marker h4, .marker h5, .marker h6, body .marker {
-  color: black;
-}
-
-.marker .video, .marker .slides {
-	/* font-size: 200%; */
-}
-</style>
+			<script src="assets/js/page-talks.js"></script>
 	</body>
 </html>

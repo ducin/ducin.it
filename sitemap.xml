@@ -15,6 +15,11 @@
   <priority>0.80</priority>
 </url>
 <url>
+  <loc>http://ducin.it/blog</loc>
+  <changefreq>weekly</changefreq>
+  <priority>0.80</priority>
+</url>
+<url>
   <loc>http://ducin.it/talks</loc>
   <changefreq>weekly</changefreq>
   <priority>0.80</priority>
@@ -26,6 +31,11 @@
 </url>
 <url>
   <loc>http://ducin.it/archive</loc>
+  <changefreq>weekly</changefreq>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>http://ducin.it/mastering-typescript-type-inference</loc>
   <changefreq>weekly</changefreq>
   <priority>0.80</priority>
 </url>

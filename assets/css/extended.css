@@ -1,0 +1,51 @@
+.blogposts li {
+  list-style-type: none;
+  text-decoration: underline;
+}
+
+.blogposts .blogpost-headline {
+  font-style: italic;
+}
+
+.blogposts .blogpost-link {
+  font-weight: 800;
+  letter-spacing: 0.225em;
+  line-height: 1.5em;
+  margin: 0 0 1em 0;
+}
+
+h1 code, h2 code, h3 code, h4 code, h5 code, h6 code {
+  color: inherit;
+  text-transform: none;
+}
+
+#main > header.post-antipatterns {
+  background: url("../../images/broken-plate.jpg") !important
+}
+
+#main > header.post-type-inference {
+  background: url("../../images/metal-construction.jpg") !important
+}
+
+.blog-footer {
+  font-size: 80%;
+}
+
+ul.toc ul {
+  list-style: disc;
+  margin: 0 0 0 0;
+  padding-left: 1em;
+}
+
+.twitter-color {
+  color: #0084b4;
+}
+
+.image-caption {
+  font-size: 80%;
+  text-align: center;
+}
+
+.wrapper.blogpost {
+  padding-top: 10px !important;
+}
