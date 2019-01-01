@@ -1,1 +1,4 @@
 Sitemap: http://ducin.it/sitemap.xml
+
+User-agent: Twitterbot
+Disallow:
