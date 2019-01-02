@@ -1,0 +1,7 @@
+[{
+  "title": "TypeScript Type Inference Guide",
+  "url": "http://ducin.it/typescript-type-inference-guide",
+  "description": "Type Inference is the most important feature we should master, as we progress with using TypeScript. It allows us to keep the type safety of our codebase, and declare types less. Less investment cost, same profit.",
+  "date": "2019-01-01",
+  "image": "http://ducin.it/images/metal-construction.jpg"
+}]
