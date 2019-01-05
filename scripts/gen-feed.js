@@ -1,7 +1,7 @@
 const fs = require('fs')
 const Feed = require('feed').Feed
 
-const posts = require('./posts.json')
+const posts = require('../data/posts.json')
 
 const feed = new Feed({
   title: "Tomasz Ducin",
@@ -11,7 +11,7 @@ const feed = new Feed({
   image: "http://ducin.it/images/tomasz-ducin-logo-zolte-300.png",
   favicon: "http://ducin.it/images/td-logo-zolte-80.png",
   copyright: "All rights reserved 2017-2019, Tomasz Ducin",
-  generator: "feed3r", // optional, default = 'Feed for Node.js'
+  generator: "feed3r", // optional, default = 'feed3r'
   feedLinks: {
     // json: "http://ducin.it/feed.json",
     atom: "http://ducin.it/feed.xml"
@@ -47,12 +47,6 @@ feed.addCategory("TypeScript");
 feed.addCategory("React");
 feed.addCategory("Angular");
 feed.addCategory("Architecture");
-
-// feed.addContributor({
-//   name: "Johan Cruyff",
-//   email: "johancruyff@example.com",
-//   link: "https://example.com/johancruyff"
-// });
 
 // Output: RSS 2.0
 fs.writeFileSync('./feed.xml', feed.rss2())

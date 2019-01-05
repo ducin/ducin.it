@@ -4,7 +4,7 @@
         <title>Tomasz Ducin</title>
         <link>http://ducin.it</link>
         <description>Tomasz Ducin Blog - Independent Consultant, Architect &amp; Trainer. JavaScript, TypeScript, Angular, React, Redux, RxJS, Architecture, Design Patterns.</description>
-        <lastBuildDate>Wed, 02 Jan 2019 20:41:05 GMT</lastBuildDate>
+        <lastBuildDate>Sat, 05 Jan 2019 12:38:07 GMT</lastBuildDate>
         <docs>http://blogs.law.harvard.edu/tech/rss</docs>
         <generator>feed3r</generator>
         <image>
@@ -26,7 +26,8 @@
             <pubDate>Tue, 01 Jan 2019 00:00:00 GMT</pubDate>
             <description><![CDATA[Type Inference is the most important feature we should master, as we progress with using TypeScript. It allows us to keep the type safety of our codebase, and declare types less. Less investment cost, same profit.]]></description>
             <author>tomasz@ducin.it (Tomasz Ducin)</author>
-            <enclosure url="http://ducin.it/images/metal-construction.jpg" />
+            <enclosure url="http://ducin.it/images/metal-construction.jpg">
+            </enclosure>
         </item>
     </channel>
 </rss>

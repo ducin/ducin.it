@@ -91,8 +91,8 @@
 
 
 <h1 id="typescript-type-inference-guide">TypeScript Type Inference Guide</h1>
-<p>New Year is a good opportunity to start a new initiative - and here I go with the first post of a whole serie, where I
-	explain mechanics of TypeScript and my experience of using it for over 4 years in big commercial projects (inlcuding
+<p>New Year is a good opportunity to start a new initiative - and here I go with the first post of a whole serie, where
+	I explain mechanics of TypeScript and my experience of using it for over 4 years in big commercial projects (inlcuding
 	sectors: finance, web analytics, ITIL, OSS).</p>
 <p>After reading this post, you&#39;ll learn:</p>
 <ul>
@@ -101,32 +101,35 @@
 	<li>what are key strengths and limitations of type inference</li>
 	<li>good practices in real world projects</li>
 </ul>
-<h2>Table of Content:</h2>
-<ul class="toc">
-	<li><a href="#implicit-vs-explicit">implicit vs explicit</a></li>
-	<li><a href="#inference-basics">inference basics</a>
+<h2 id="table-of-contents">Table of Contents</h2>
+<ul>
+	<li><a href="#typescript-type-inference-guide">TypeScript Type Inference Guide</a>
 		<ul>
-			<li><a href="#variable-type-inference">variable type inference</a></li>
-			<li><a href="#expression-type-inference">expression type inference</a></li>
-			<li><a href="#function-return-type-inference">function return type inference</a></li>
-			<li><a href="#compiler-flags">compiler flags</a></li>
+			<li><a href="#motivation">motivation</a></li>
+			<li><a href="#implicit-vs-explicit">implicit vs explicit</a></li>
+			<li><a href="#inference-basics">inference basics</a>
+				<ul>
+					<li><a href="#variable-type-inference">variable type inference</a></li>
+					<li><a href="#expression-type-inference">expression type inference</a></li>
+					<li><a href="#function-return-type-inference">function return type inference</a></li>
+					<li><a href="#compiler-flags">compiler flags</a></li>
+				</ul>
+			</li>
+			<li><a href="#limitations">limitations</a>
+				<ul>
+					<li><a href="#function-parameters-are-not-inferred">function parameters are not inferred</a></li>
+					<li><a href="#external-data-sources-are-not-inferred">external data sources are not inferred</a></li>
+					<li><a href="#functional-composition-is-not-inferred">functional composition is not inferred</a></li>
+				</ul>
+			</li>
+			<li><a href="#example-data-structure">example data structure</a></li>
+			<li><a href="#prototype-based-chaining">prototype-based chaining</a></li>
+			<li><a href="#arrayreduce-and-the-accumulator-type-problem">array.reduce and the accumulator type problem</a></li>
+			<li><a href="#flexibility">flexibility</a></li>
+			<li><a href="#type-inference-best-practices">type inference best practices</a></li>
+			<li><a href="#summary">summary</a></li>
 		</ul>
 	</li>
-	<li><a href="#limitations">limitations</a>
-		<ul>
-			<li><a href="#function-parameters-arent-inferred-limitation">function parameters aren&#39;t inferred (limitation)</a></li>
-			<li><a href="#asynchronous-operations-arent-inferred-limitation">asynchronous operations aren&#39;t inferred
-					(limitation)</a></li>
-			<li><a href="#functional-composition-isnt-inferred-limitation">functional composition isn&#39;t inferred
-					(limitation)</a></li>
-		</ul>
-	</li>
-	<li><a href="#example-data-structure">example data structure</a></li>
-	<li><a href="#prototype-based-chaining">prototype-based chaining</a></li>
-	<li><a href="#arrayreduce-and-the-accumulator-type-problem">array.reduce and the accumulator type problem</a></li>
-	<li><a href="#flexibility">flexibility</a></li>
-	<li><a href="#type-inference-best-practices">type inference best practices</a></li>
-	<li><a href="#summary">summary</a></li>
 </ul>
 <h2 id="motivation">motivation</h2>
 <p><strong>Type Inference is one of the most important features we should master, as we progress with using TypeScript</strong>.
@@ -222,7 +225,7 @@ const obj: ObjWithFields = {}</code></pre>
 <h2 id="limitations">limitations</h2>
 <p>It&#39;s important to highlight that there are limitations to this language feature. The three most significant ones
 	are:</p>
-<h4 id="function-parameters-aren-t-inferred-limitation-">function parameters aren&#39;t inferred (limitation)</h4>
+<h4 id="function-parameters-are-not-inferred">function parameters are not inferred</h4>
 <p>As we&#39;ve seen in the last snippet above, <strong>function parameters are never inferred. Never. Again, no
 		exceptions. <code>any</code> is attached, if no explicit declaration.</strong> This surely is a limitation, but if we
 	wanted TS to infer what is the function parameter type, we&#39;d have to go through all the places where the function
@@ -240,11 +243,16 @@ const obj: ObjWithFields = {}</code></pre>
 		have to declare them explicitly</strong>, no inference here:</p>
 <pre><code class="language-ts">(firstName: string, lastName: string) =&gt; string</code></pre>
 <p>Not a big effort, as you can see.</p>
-<h4 id="asynchronous-operations-aren-t-inferred-limitation-">asynchronous operations aren&#39;t inferred (limitation)</h4>
-<p>... because there&#39;s no way to do it! When TypeScript is compiled, JavaScript output is produced - and it&#39;s
-	JS that is executed in runtime. There&#39;s no TypeScript in runtime anymore. So if there&#39;s no TS, there are also
-	no TS types and no TS type checks. Can you think of any way TypeScript could infer what is the shape of the JSONs
-	we&#39;re about to receive from a remote system, as below?</p>
+<h4 id="external-data-sources-are-not-inferred">external data sources are not inferred</h4>
+<p>... because there&#39;s no way to do it! <strong>External data sources include both asynchronous operations
+		(websocket events, promises, async await, observables) and synchronous operations (e.g. reading JSON from a file)</strong>.
+	TypeScript controls all declarations and expresions within our codebase, but all external data is out of reach.</p>
+<p>TypeScript capabilities are used only in compile-time, but once compiled, we&#39;ve got JavaScript output - and
+	it&#39;s JS that gets executed in runtime. So whether some external data would get fetched synchronously or
+	asynchronously, there&#39;s no TypeScript in runtime anymore. And if there&#39;s no TS, there are also no TS types and
+	no TS type checks.</p>
+<p>Can you think of any way TypeScript could infer what is the shape of the JSONs we&#39;re about to receive from a
+	remote system, as below?</p>
 <pre><code class="language-ts">http.get(&#39;https://my.api.com/users&#39;) // return a promise
   .then(result =&gt; consume(result))</code></pre>
 <p>What we can do is to arbitrarily and explicitly declare what we expect there:</p>
@@ -284,7 +292,7 @@ getUsers().then((result: User[]) =&gt; consume(result))</code></pre>
 		was the point.</li>
 </ul>
 <p>And so the TypeScript team decided not to do that.</p>
-<h4 id="functional-composition-isn-t-inferred-limitation-">functional composition isn&#39;t inferred (limitation)</h4>
+<h4 id="functional-composition-is-not-inferred">functional composition is not inferred</h4>
 <p>Finally, the limitation tht hits many FP-based implementations is that utility functions such as <code>compose</code>
 	and <code>pipe</code> are not correctly typed out of the box. It&#39;s doable, however, it requires a hacky
 	workaround.</p>
@@ -394,7 +402,7 @@ const bands: Band[] = [{
   ) // string[]</code></pre>
 <p>The power of TypeScript is that above code doesn&#39;t have any explicit type definitions at all (no <code>: string</code>),
 	but everything is type-safe.</p>
-<h2 id="array-reduce-and-the-accumulator-type-problem">array.reduce and the accumulator type problem</h2>
+<h2 id="arrayreduce-and-the-accumulator-type-problem">array.reduce and the accumulator type problem</h2>
 <p>Let&#39;s carry on with Array methods, this time: <code>reduce</code>. Array reduce is special in a way that all
 	other Higher-order functions can be implemented using it. In other words, reduce is the most general out of all HOFs
 	on arrays. Reduce defines an iteration over a collection, where an accumulator (aggregate, whatever we call it) is
@@ -499,6 +507,7 @@ genreMap.psychedelic // FAIL! psychedelic doesn&#39;t exist on {}</code></pre>
 	<li>Too much type inference makes too much types changes, potentially, leaving us unaware of how far changes go.</li>
 	<li>Finally, set at least the <code>--noImplicitAny</code> and <code>--noImplicitThis</code> compiler flags.</li>
 </ul>
+
 
 
 
