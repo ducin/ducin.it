@@ -394,7 +394,7 @@ const bands: Band[] = [{
 <pre><code class="language-ts">const unique = (genres: string[]) =&gt; Array.from(new Set(genres))</code></pre>
 <p>The <code>unique</code> function removs repetition according to the semantics of how do <code>Set</code> elements
 	are stored (we&#39;ll ignore the <code>identity</code> function for now). But we can do better, using <strong>generics</strong>:</p>
-<pre><code class="language-ts">const unique = &lt;T&gt;(items: T[]) =&gt; Array.from(new Set(genres))</code></pre>
+<pre><code class="language-ts">const unique = &lt;T&gt;(items: T[]) =&gt; Array.from(new Set(items))</code></pre>
 <p>And we&#39;ve got a more generic function that will remove our genres repetition:</p>
 <pre><code class="language-ts">const genres = unique(
     bands.map(b =&gt; b.genres) // string[][]

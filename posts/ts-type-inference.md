@@ -309,7 +309,7 @@ const unique = (genres: string[]) => Array.from(new Set(genres))
 The `unique` function removs repetition according to the semantics of how do `Set` elements are stored (we'll ignore the `identity` function for now). But we can do better, using **generics**:
 
 ```ts
-const unique = <T>(items: T[]) => Array.from(new Set(genres))
+const unique = <T>(items: T[]) => Array.from(new Set(items))
 ```
 
 And we've got a more generic function that will remove our genres repetition:
