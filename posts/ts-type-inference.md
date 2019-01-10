@@ -409,7 +409,7 @@ Basically, we reduce the cost. But we should also track these critical places, w
 
 Good candidates for explicit typing are:
 
-- **All asynchronous operations**. TypeScript won't check them in runtime, but we can make it check whether we consume them further correctly.
+- **All external operations (both sync and async)**. TypeScript won't check them in runtime, but we can make it check whether we consume them further correctly.
 - **Data structures**. We are supposed to declare as many `type`s and `interface`s as our domain requires. Often, this can be automated in a _Contract-First Design approach_. Functions and objects that rely on the data structures should be full of data structures typedefs.
 - **Function parameters and, initially, function return types**. Function parameter types has to be typed explicitly (since TS doesn't do that). **Function return explicit types are a mean to check if my implementation matches my intention**. Depending on the complexity of a function, you can leave the return type or remove it (e.g. if it's an obvious one-liner).
 

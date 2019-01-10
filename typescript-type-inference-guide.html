@@ -487,7 +487,7 @@ genreMap.psychedelic // FAIL! psychedelic doesn&#39;t exist on {}</code></pre>
 <h2 id="type-inference-best-practices">type inference best practices</h2>
 <p>Good candidates for explicit typing are:</p>
 <ul>
-	<li><strong>All asynchronous operations</strong>. TypeScript won&#39;t check them in runtime, but we can make it check
+	<li><strong>All external operations (both sync and async)</strong>. TypeScript won&#39;t check them in runtime, but we can make it check
 		whether we consume them further correctly.</li>
 	<li><strong>Data structures</strong>. We are supposed to declare as many <code>type</code>s and <code>interface</code>s
 		as our domain requires. Often, this can be automated in a <em>Contract-First Design approach</em>. Functions and
