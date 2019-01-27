@@ -51,7 +51,7 @@ module.exports=[
   }, {
     "title": "What if we don't have API",
     "event": "WarsawJS #2",
-    "link": "http://warsawjs.com/meetup-2/talk-what-if-we-dont-have-api.html",
+    "link": "http://warsawjs.com/",
     "video": "https://www.youtube.com/watch?v=QJZtl6vZHvc",
     "slides": "http://slides.com/ducin/what-if-we-don-t-have-api",
     "date": "2014.10.28",
@@ -86,7 +86,7 @@ module.exports=[
   }, {
     "title": "All that JS",
     "event": "WarsawJS #7",
-    "link": "http://warsawjs.com/meetup-7/talk-all-that-js.html",
+    "link": "http://warsawjs.com/",
     "video": "https://www.youtube.com/watch?v=VFNnBhkiMrg",
     "slides": "http://slides.com/ducin/all-that-js",
     "date": "2015.03.18",
@@ -109,7 +109,7 @@ module.exports=[
   }, {
     "title": "Enterprise Interface Architecture: JSON Schema",
     "event": "WarsawJS #10",
-    "link": "http://warsawjs.com/meetup-10/talk-enterprise-interface-architecture-json-schema-en.html",
+    "link": "http://warsawjs.com/",
     "video": "https://www.youtube.com/watch?v=TkqiUG3j_Xw",
     "slides": "http://slides.com/ducin/json-schema",
     "date": "2015.06.17",
@@ -132,7 +132,7 @@ module.exports=[
   }, {
     "title": "Enterprise Interface Architecture: Seeking Scalable Design",
     "event": "WarsawJS #14",
-    "link": "http://warsawjs.com/meetup-14/talk-enterprise-interface-architecture-seeking-scalable-design.html",
+    "link": "http://warsawjs.com/",
     "video": "https://www.youtube.com/watch?v=a6kIeFimgxA",
     "slides": "http://slides.com/ducin/seeking-scalable-design",
     "date": "2015.10.21",
@@ -219,7 +219,7 @@ module.exports=[
   }, {
     "title": "JavaScript + Java = TypeScript",
     "event": "WarsawJS #22",
-    "link": "http://warsawjs.com/meetup-22/talk-tomasz-ducin-javascript-java-typescript.html",
+    "link": "http://warsawjs.com/",
     "video": "https://www.youtube.com/watch?v=jtdIHM24LwQ",
     "slides": "http://slides.com/ducin/javascript-plus-java-equals-typescript",
     "date": "2016.06.08",
@@ -362,6 +362,7 @@ module.exports=[
     "title": "5 architectures of Asynchronous JavaScript",
     "event": "Nordic.js",
     "link": "http://nordicjs.com/",
+    "video": "https://www.youtube.com/watch?v=YXo4YOLDK1k",
     "slides": "http://slides.com/ducin/5-architectures-of-asynchronous-javascript",
     "date": "2017.09.07",
     "venueId": "nobelberget-stockholm"
@@ -369,21 +370,40 @@ module.exports=[
     "title": "5 architectures of Asynchronous JavaScript",
     "event": "WJUG (Warsaw Java User Group) #216",
     "link": "https://www.meetup.com/Warszawa-JUG/events/243929228/",
+    "video": "https://www.youtube.com/watch?v=ZPectr32RMc",
     "slides": "http://slides.com/ducin/5-architectures-of-asynchronous-javascript",
     "date": "2017.10.10",
     "venueId": "mimuw-warsaw"
   }, {
     "title": "5 architectures of Asynchronous JavaScript (1/2)",
     "event": "WarsawJS #38",
+    "link": "http://warsawjs.com/",
+    "video": "https://www.youtube.com/watch?v=mc0ZxuDTjVY",
     "slides": "http://slides.com/ducin/5-architectures-of-asynchronous-javascript",
     "date": "2017.10.11",
     "venueId": "theplace-warsaw"
   }, {
     "title": "5 architectures of Asynchronous JavaScript (2/2)",
     "event": "WarsawJS #40",
+    "link": "http://warsawjs.com/",
     "slides": "http://slides.com/ducin/5-architectures-of-asynchronous-javascript",
     "date": "2017.12.13",
     "venueId": "theplace-warsaw"
+  }, {
+    "title": "RxJS: Everything is a Stream",
+    "event": "4developers",
+    "link": "http://4developers.org.pl/",
+    "video": "https://www.youtube.com/watch?v=IB5yxGGVEGk",
+    "slides": "https://slides.com/ducin/everything-is-a-stream",
+    "date": "2018.04.09",
+    "venueId": "hotel-sangate-warsaw"
+  }, {
+    "title": "The Many Meanings of Inversion of Control (IoC) in JavaScript",
+    "event": "JS-Poland",
+    "link": "http://js-poland.pl/",
+    "slides": "https://slides.com/ducin/the-many-meanings-of-ioc-in-javascript",
+    "date": "2018.11.16",
+    "venueId": "golden-terraces-warsaw"
   }
 ]
 
