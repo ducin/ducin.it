@@ -404,6 +404,32 @@ module.exports=[
     "slides": "https://slides.com/ducin/the-many-meanings-of-ioc-in-javascript",
     "date": "2018.11.16",
     "venueId": "golden-terraces-warsaw"
+  }, {
+    "title": "Functional Composition with Static Types in TypeScript",
+    "event": "Warsaw TypeScript meetup #2",
+    "link": "https://www.meetup.com/Warsaw-TypeScript/events/257925474/",
+    "date": "2019.02.06",
+    "venueId": "koszyki-warsaw"
+  }, {
+    "title": "Functional Composition with Static Types in TypeScript",
+    "event": "Wrocław TypeScript meetup #3",
+    "link": "https://www.meetup.com/WrocTypeScript/events/pdbxsqyzfbkc/",
+    "date": "2019.03.27",
+    "venueId": "spawn-point-wroclaw"
+  }, {
+    "title": "Functional Reactive Programming: Everything is a Stream",
+    "event": "Infoshare",
+    "link": "https://infoshare.pl",
+    "slides": "https://slides.com/ducin/everything-is-a-stream",
+    "date": "2019.05.08",
+    "venueId": "amberexpo-gdansk"
+  }, {
+    "title": "5 Architectures of Asynchronous JavaScript",
+    "event": "Dutch PHP Conference",
+    "link": "https://www.phpconference.nl/",
+    "slides": "https://slides.com/ducin/5-architectures-of-asynchronous-javascript",
+    "date": "2019.06.07",
+    "venueId": "rai-amsterdam"
   }
 ]
 
@@ -621,6 +647,34 @@ module.exports={
     "name": "Łódź House of Culture",
     "latitude": 51.7693554,
     "longitude": 19.46215129999996
+  },
+  "koszyki-warsaw": {
+    "city": "Warsaw",
+    "countryCode": "PL",
+    "name": "Mindspace, Hala Koszyki",
+    "latitude": 52.2221036,
+    "longitude": 21.0118366
+  },
+  "spawn-point-wroclaw": {
+    "city": "Wrocław",
+    "countryCode": "PL",
+    "name": "Spawn Point",
+    "latitude": 51.112453,
+    "longitude": 17.024282
+  },
+  "amberexpo-gdansk": {
+    "city": "Gdańsk",
+    "countryCode": "PL",
+    "name": "Amberexpo",
+    "latitude": 54.3871758,
+    "longitude": 18.6358423
+  },
+  "rai-amsterdam": {
+    "city": "Amsterdam",
+    "countryCode": "NL",
+    "name": "RAI Amsterdam",
+    "latitude": 52.3370349,
+    "longitude": 4.8902289
   }
 }
 

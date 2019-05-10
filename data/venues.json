@@ -211,5 +211,33 @@
     "name": "Łódź House of Culture",
     "latitude": 51.7693554,
     "longitude": 19.46215129999996
+  },
+  "koszyki-warsaw": {
+    "city": "Warsaw",
+    "countryCode": "PL",
+    "name": "Mindspace, Hala Koszyki",
+    "latitude": 52.2221036,
+    "longitude": 21.0118366
+  },
+  "spawn-point-wroclaw": {
+    "city": "Wrocław",
+    "countryCode": "PL",
+    "name": "Spawn Point",
+    "latitude": 51.112453,
+    "longitude": 17.024282
+  },
+  "amberexpo-gdansk": {
+    "city": "Gdańsk",
+    "countryCode": "PL",
+    "name": "Amberexpo",
+    "latitude": 54.3871758,
+    "longitude": 18.6358423
+  },
+  "rai-amsterdam": {
+    "city": "Amsterdam",
+    "countryCode": "NL",
+    "name": "RAI Amsterdam",
+    "latitude": 52.3370349,
+    "longitude": 4.8902289
   }
 }

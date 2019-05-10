@@ -403,5 +403,31 @@
     "slides": "https://slides.com/ducin/the-many-meanings-of-ioc-in-javascript",
     "date": "2018.11.16",
     "venueId": "golden-terraces-warsaw"
+  }, {
+    "title": "Functional Composition with Static Types in TypeScript",
+    "event": "Warsaw TypeScript meetup #2",
+    "link": "https://www.meetup.com/Warsaw-TypeScript/events/257925474/",
+    "date": "2019.02.06",
+    "venueId": "koszyki-warsaw"
+  }, {
+    "title": "Functional Composition with Static Types in TypeScript",
+    "event": "Wrocław TypeScript meetup #3",
+    "link": "https://www.meetup.com/WrocTypeScript/events/pdbxsqyzfbkc/",
+    "date": "2019.03.27",
+    "venueId": "spawn-point-wroclaw"
+  }, {
+    "title": "Functional Reactive Programming: Everything is a Stream",
+    "event": "Infoshare",
+    "link": "https://infoshare.pl",
+    "slides": "https://slides.com/ducin/everything-is-a-stream",
+    "date": "2019.05.08",
+    "venueId": "amberexpo-gdansk"
+  }, {
+    "title": "5 Architectures of Asynchronous JavaScript",
+    "event": "Dutch PHP Conference",
+    "link": "https://www.phpconference.nl/",
+    "slides": "https://slides.com/ducin/5-architectures-of-asynchronous-javascript",
+    "date": "2019.06.07",
+    "venueId": "rai-amsterdam"
   }
 ]
