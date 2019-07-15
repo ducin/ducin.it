@@ -239,5 +239,33 @@
     "name": "RAI Amsterdam",
     "latitude": 52.3370349,
     "longitude": 4.8902289
+  },
+  "hotel-galaxy-krakow": {
+    "city": "Kraków",
+    "countryCode": "PL",
+    "name": "Hotel Galaxy Kraków",
+    "latitude": 50.0535949,
+    "longitude": 19.9585604
+  },
+  "sii-kopcinskiego-lodz": {
+    "city": "Łódź",
+    "countryCode": "PL",
+    "name": "biuro Sii Łódź",
+    "latitude": 51.76369330805464,
+    "longitude": 19.484124183654785
+  },
+  "hotel-ibis-styles-wroclaw": {
+    "city": "Wrocław",
+    "countryCode": "PL",
+    "name": "Hotel Ibis Styles Wrocław",
+    "latitude": 51.0996663,
+    "longitude": 17.0396111
+  },
+  "hotel-novotel-katowice-centrum": {
+    "city": "Katowice",
+    "countryCode": "PL",
+    "name": "Hotel Novotel Katowice Centrum",
+    "latitude": 50.260988,
+    "longitude": 19.0334094
   }
 }

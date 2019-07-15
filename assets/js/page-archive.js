@@ -430,6 +430,41 @@ module.exports=[
     "slides": "https://slides.com/ducin/5-architectures-of-asynchronous-javascript",
     "date": "2019.06.07",
     "venueId": "rai-amsterdam"
+  }, {
+    "title": "Architect's Guide to Frontend Frameworks",
+    "event": "DevoxxPL",
+    "link": "http://devoxx.pl",
+    "slides": "https://slides.com/ducin/architects-guide-to-frontend-frameworks",
+    "date": "2019.06.24",
+    "venueId": "ice-krakow"
+  }, {
+    "title": "RxJS: Everything is a Stream",
+    "event": "Meetup Sii",
+    "link": "https://evenea.pl/imprezy/szkolenia/lodz/meetup-rxjs-227762",
+    "slides": "https://slides.com/ducin/everything-is-a-stream",
+    "date": "2019.07.12",
+    "venueId": "sii-kopcinskiego-lodz"
+  }, {
+    "title": "RxJS: Everything is a Stream",
+    "event": "4Developers Kraków",
+    "link": "https://4developers.org.pl",
+    "slides": "https://slides.com/ducin/everything-is-a-stream",
+    "date": "2019.10.01",
+    "venueId": "hotel-galaxy-krakow"
+  }, {
+    "title": "The many meaning of Inversion of Control (IoC) in JavaScript",
+    "event": "4Developers Katowice",
+    "link": "https://4developers.org.pl",
+    "slides": "https://slides.com/ducin/the-many-meanings-of-ioc-in-javascript",
+    "date": "2019.10.21",
+    "venueId": "hotel-novotel-katowice-centrum"
+  }, {
+    "title": "RxJS: Everything is a Stream",
+    "event": "4Developers Wrocław",
+    "link": "https://4developers.org.pl",
+    "slides": "https://slides.com/ducin/everything-is-a-stream",
+    "date": "2019.11.05",
+    "venueId": "hotel-ibis-styles-wroclaw"
   }
 ]
 
@@ -675,6 +710,34 @@ module.exports={
     "name": "RAI Amsterdam",
     "latitude": 52.3370349,
     "longitude": 4.8902289
+  },
+  "hotel-galaxy-krakow": {
+    "city": "Kraków",
+    "countryCode": "PL",
+    "name": "Hotel Galaxy Kraków",
+    "latitude": 50.0535949,
+    "longitude": 19.9585604
+  },
+  "sii-kopcinskiego-lodz": {
+    "city": "Łódź",
+    "countryCode": "PL",
+    "name": "biuro Sii Łódź",
+    "latitude": 51.76369330805464,
+    "longitude": 19.484124183654785
+  },
+  "hotel-ibis-styles-wroclaw": {
+    "city": "Wrocław",
+    "countryCode": "PL",
+    "name": "Hotel Ibis Styles Wrocław",
+    "latitude": 51.0996663,
+    "longitude": 17.0396111
+  },
+  "hotel-novotel-katowice-centrum": {
+    "city": "Katowice",
+    "countryCode": "PL",
+    "name": "Hotel Novotel Katowice Centrum",
+    "latitude": 50.260988,
+    "longitude": 19.0334094
   }
 }
 

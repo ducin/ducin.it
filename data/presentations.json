@@ -429,5 +429,40 @@
     "slides": "https://slides.com/ducin/5-architectures-of-asynchronous-javascript",
     "date": "2019.06.07",
     "venueId": "rai-amsterdam"
+  }, {
+    "title": "Architect's Guide to Frontend Frameworks",
+    "event": "DevoxxPL",
+    "link": "http://devoxx.pl",
+    "slides": "https://slides.com/ducin/architects-guide-to-frontend-frameworks",
+    "date": "2019.06.24",
+    "venueId": "ice-krakow"
+  }, {
+    "title": "RxJS: Everything is a Stream",
+    "event": "Meetup Sii",
+    "link": "https://evenea.pl/imprezy/szkolenia/lodz/meetup-rxjs-227762",
+    "slides": "https://slides.com/ducin/everything-is-a-stream",
+    "date": "2019.07.12",
+    "venueId": "sii-kopcinskiego-lodz"
+  }, {
+    "title": "RxJS: Everything is a Stream",
+    "event": "4Developers Kraków",
+    "link": "https://4developers.org.pl",
+    "slides": "https://slides.com/ducin/everything-is-a-stream",
+    "date": "2019.10.01",
+    "venueId": "hotel-galaxy-krakow"
+  }, {
+    "title": "The many meaning of Inversion of Control (IoC) in JavaScript",
+    "event": "4Developers Katowice",
+    "link": "https://4developers.org.pl",
+    "slides": "https://slides.com/ducin/the-many-meanings-of-ioc-in-javascript",
+    "date": "2019.10.21",
+    "venueId": "hotel-novotel-katowice-centrum"
+  }, {
+    "title": "RxJS: Everything is a Stream",
+    "event": "4Developers Wrocław",
+    "link": "https://4developers.org.pl",
+    "slides": "https://slides.com/ducin/everything-is-a-stream",
+    "date": "2019.11.05",
+    "venueId": "hotel-ibis-styles-wroclaw"
   }
 ]
