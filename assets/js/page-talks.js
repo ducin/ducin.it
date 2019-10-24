@@ -1,4 +1,6 @@
 var slides = {
+    "architect-frontend": "slides.com/ducin/architects-guide-to-frontend-frameworks",
+    "ioc-js": "slides.com/ducin/the-many-meanings-of-ioc-in-javascript",
     "rxjs-streams": "slides.com/ducin/everything-is-a-stream",
     "5-architectures": "slides.com/ducin/5-architectures-of-asynchronous-javascript",
     "async-await": "slides.com/ducin/async-functions-awaiting-you",
