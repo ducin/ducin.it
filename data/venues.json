@@ -267,5 +267,12 @@
     "name": "Hotel Novotel Katowice Centrum",
     "latitude": 50.260988,
     "longitude": 19.0334094
+  },
+  "future-processing-gliwice": {
+    "city": "Gliwice",
+    "countryCode": "PL",
+    "name": "Future Processing",
+    "latitude": 50.2778391,
+    "longitude": 18.6851543
   }
 }

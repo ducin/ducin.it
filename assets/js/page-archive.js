@@ -460,6 +460,13 @@ module.exports=[
     "venueId": "hotel-novotel-katowice-centrum"
   }, {
     "title": "RxJS: Everything is a Stream",
+    "event": "Angular Silesia",
+    "link": "https://www.facebook.com/events/428076948059861",
+    "slides": "https://slides.com/ducin/everything-is-a-stream",
+    "date": "2019.10.22",
+    "venueId": "future-processing-gliwice"
+  }, {
+    "title": "RxJS: Everything is a Stream",
     "event": "4Developers Wrocław",
     "link": "https://4developers.org.pl",
     "slides": "https://slides.com/ducin/everything-is-a-stream",
@@ -738,6 +745,13 @@ module.exports={
     "name": "Hotel Novotel Katowice Centrum",
     "latitude": 50.260988,
     "longitude": 19.0334094
+  },
+  "future-processing-gliwice": {
+    "city": "Gliwice",
+    "countryCode": "PL",
+    "name": "Future Processing",
+    "latitude": 50.2778391,
+    "longitude": 18.6851543
   }
 }
 
