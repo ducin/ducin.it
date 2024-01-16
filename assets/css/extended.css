@@ -1,8 +1,12 @@
 @font-face {
-  font-family: "Virgil";
+  font-family: Virgil;
   src: url("../fonts/Virgil.woff2");
-  font-display: swap;
 }
+
+/* @font-face {
+  font-family: "Virgil";
+  src: url("https://excalidraw.com/fonts/Virgil.woff2");
+} */
 
 .blogposts li {
   list-style-type: none;
