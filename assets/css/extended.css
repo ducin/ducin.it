@@ -24,7 +24,11 @@ h1 code, h2 code, h3 code, h4 code, h5 code, h6 code {
 }
 
 #main > header.post-type-inference {
-  background: url("../../images/metal-construction.jpg") !important
+  background: url("../../images/cover-metal-construction.jpg") !important
+}
+
+#main > header.post-no-hot-observables {
+  background: url("../../images/cover-red-and-blue.png") !important
 }
 
 .blog-footer {
