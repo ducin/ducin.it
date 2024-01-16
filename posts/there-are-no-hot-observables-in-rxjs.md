@@ -34,7 +34,7 @@ Yep, you heard it right. In very short, 32 is a [Cartesian product](https://en.w
 4*2*2*2 = 32
 `
 
-If we'd also take **connectable streams** into account ([as in _ Understanding publish, refCount and connect_](https://blog.thoughtram.io/angular/2016/06/16/cold-vs-hot-observables.html)), there'd be even more  😈.
+If we'd also take **connectable streams** into account ([as in _Understanding publish, refCount and connect_](https://blog.thoughtram.io/angular/2016/06/16/cold-vs-hot-observables.html)), there'd be even more  😈.
 
 ## sh*t, what are all those things?! 😐
 
