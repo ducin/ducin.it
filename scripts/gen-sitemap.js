@@ -1,3 +1,5 @@
+#!/usr/bin/env node
+
 const fs = require('fs')
 
 const pages = require('../data/pages.json')

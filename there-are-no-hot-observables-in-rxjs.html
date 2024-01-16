@@ -23,11 +23,11 @@
 		<meta name="twitter:site" content="@tomasz_ducin" />
 		<meta name="twitter:creator" content="@tomasz_ducin" />
 		<meta name="twitter:description" content="The &quot;hot and cold&quot; observables concept is quite useful when we introduce RxJS to a complete beginner. But as soon as they dive into real project usecases, e.g. late subscription of a newly rendered component that subscribes to a (behavior? replay?) subject which had already emitted something - then the &quot;hot and cold&quot; concept is... harmful." />
-		<meta name="twitter:image" content="http://ducin.it/images/cover-metal-construction.jpg" />
+		<meta name="twitter:image" content="http://ducin.it/images/images/cover-red-and-blue.png" />
 		<meta property="og:url" content="http://ducin.it/there-are-no-hot-observables-in-rxjs" />
 		<meta property="og:title" content="There are no hot Observables in RxJS" />
 		<meta property="og:description" content="The &quot;hot and cold&quot; observables concept is quite useful when we introduce RxJS to a complete beginner. But as soon as they dive into real project usecases, e.g. late subscription of a newly rendered component that subscribes to a (behavior? replay?) subject which had already emitted something - then the &quot;hot and cold&quot; concept is... harmful." />
-		<meta property="og:image" content="http://ducin.it/images/cover-metal-construction.jpg" />
+		<meta property="og:image" content="http://ducin.it/images/images/cover-red-and-blue.png" />
 	</head>
 	<body>
 		<script></script>
@@ -96,6 +96,34 @@
 <p><em>All models are wrong, but some are useful.</em></p>
 </blockquote>
 <p>However, I would add: <em>useful, but <strong>until a certain point!</strong></em></p>
+<h2 id="table-of-contents">Table of Contents</h2>
+<ul>
+<li><a href="#there-are-no-hot-observables-in-rxjs">There are no &quot;hot&quot; Observables in RxJS</a><ul>
+<li><a href="#false-dichotomy">False dichotomy</a></li>
+<li><a href="#32-hot-observable-types-%F0%9F%98%B2">32 hot Observable types? 😲</a></li>
+<li><a href="#sht-what-are-all-those-things-%F0%9F%98%90">sh*t, what are all those things?! 😐</a></li>
+<li><a href="#what-please-stop-%F0%9F%98%A5">What? Please, stop 😥</a></li>
+<li><a href="#first-things-first">First things first</a><ul>
+<li><a href="#fact-1-notification-types">Fact 1: Notification Types</a></li>
+<li><a href="#fact-2-unicasting-and-multicasting">Fact 2: Unicasting and Multicasting</a></li>
+<li><a href="#fact-3-observables-are-lazy-by-default">Fact 3: observables are lazy by default</a></li>
+<li><a href="#fact-4-producer-consumer-pattern">Fact 4: producer-consumer pattern</a></li>
+</ul>
+</li>
+<li><a href="#fact-summary">Fact Summary</a></li>
+<li><a href="#back-to-%F0%9F%94%A5-hot-32-%F0%9F%94%A5">Back to 🔥 hot 32 🔥</a><ul>
+<li><a href="#reset-on-error">reset on error</a></li>
+<li><a href="#reset-on-complete">reset on complete</a></li>
+<li><a href="#reset-on-ref-count-zero">reset on ref count zero</a></li>
+</ul>
+</li>
+<li><a href="#where-did-you-get-these-from">where did you get these from?</a></li>
+</ul>
+</li>
+<li><a href="#how-important-is-reading-the-source-code">how important is reading the source code?</a><ul>
+<li><a href="#wow-hot-%F0%9F%94%A5-are-your-streams">Wow hot 🔥 are your streams?</a></li>
+<li><a href="#conclusion">Conclusion</a></li>
+</ul>
 <h2 id="false-dichotomy">False dichotomy</h2>
 <p>The &quot;problem&quot; with the &quot;<em>hot and cold</em>&quot; concept is that it implicitly suggests that there are <strong>two types</strong> of Observables. Only two. And yes, when you read the explanations (<a href="https://blog.thoughtram.io/angular/2016/06/16/cold-vs-hot-observables.html">like this legendary one by Thoughtram</a>), you know that <strong>reality is more complex</strong> 🙂 but when I join a team in order to do some <a href="http://ducin.it">frontend consultancy services</a> (or run a <a href="http://ducin.it/trainings">Angular/Rx training</a>), <strong>developers most often think in either-or</strong>. Either hot or cold.</p>
 <p>I hope you are one of those truly passionate devs who dig into things, dive really deep, seek for understanding. You might already know that there are dozens of completely different types of &quot;hot&quot;. But the majority of the industry isn&#39;t like this. <strong>We&#39;re all responsible for the concepts and metaphors we introduce</strong>.</p>

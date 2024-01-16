@@ -1,3 +1,5 @@
+#!/usr/bin/env node
+
 const { listFiles } = require('./utils')
 const { generatePostHTML } = require('./post')
 

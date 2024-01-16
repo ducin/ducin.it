@@ -12,6 +12,8 @@ The [following aphorism](https://en.wikipedia.org/wiki/All_models_are_wrong) ill
 
 However, I would add: _useful, but **until a certain point!**_
 
+<% TOC %>
+
 ## False dichotomy
 
 The "problem" with the "_hot and cold_" concept is that it implicitly suggests that there are **two types** of Observables. Only two. And yes, when you read the explanations ([like this legendary one by Thoughtram](https://blog.thoughtram.io/angular/2016/06/16/cold-vs-hot-observables.html)), you know that **reality is more complex** 🙂 but when I join a team in order to do some [frontend consultancy services](http://ducin.it) (or run a [Angular/Rx training](http://ducin.it/trainings)), **developers most often think in either-or**. Either hot or cold.
