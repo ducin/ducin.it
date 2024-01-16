@@ -36,7 +36,7 @@ Yep, you heard it right. In very short, 32 is a [Cartesian product](https://en.w
 
 If we'd also take **connectable streams** into account ([as in _Understanding publish, refCount and connect_](https://blog.thoughtram.io/angular/2016/06/16/cold-vs-hot-observables.html)), there'd be even more  😈.
 
-## sh*t, what are all those things?! 😐
+## Sh*t, what are all those things?! 😐
 
 These are separate characteristics of Subjects that have existed for a very long time already - and most probably you experienced them in some rather unclear circumstances, and haven't become aware of what's going on. For example, you might have noticed that, even though the **reference counter** (number of active subscribers) have **dropped to zero**, `share()` used to recreate the underlying stream (e.g. a new HTTP request) whenever a new active subscription happened. **But after replacing the `share()` operator with `shareReplay()`, it didn't**!. Even though the circumstances were the same... And this is NOT a specificity of either Subject or ReplaySubject. This is what so called "hot" is underneath. One term is just so wrong, if you want to get your head around it!
 
@@ -142,7 +142,7 @@ And the question arises: **if the `refCount` drops to zero** (no active subscrib
 
 Remember, of the producer is live, it will keep on emitting items according to its nature (e.g. interval will keep on doing its job).
 
-## where did you get these from?
+## Where did you get these from?
 
 Now comes my favorite part 😁 - source code: let's dive into RxJS `ShareReplay` sources. This one is especially good to look at, add it specifies config parameters exposed by the `share` operator:
 
@@ -154,7 +154,7 @@ Now comes my favorite part 😁 - source code: let's dive into RxJS `ShareReplay
 
 And the `resetOnError`, `resetOnComplete` and `resetOnCountZero` are things we've already gone through 🙃All in all, we can determine all these.
 
-# how important is reading the source code?
+# How important is reading the source code?
 
 Sometimes not that much. But this time - extremely important! Imagine all these situations where you use `share()`/`shareReplay()` and you hope _it should be ok_. NO! Think about all these usecases, such as switching routes (navigation), potentially causing `refCount` zero for a short while. Or receiving `complete` which _might_ unintentionally break your app logic.
 

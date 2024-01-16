@@ -101,7 +101,7 @@
 <li><a href="#there-are-no-hot-observables-in-rxjs">There are no &quot;hot&quot; Observables in RxJS</a><ul>
 <li><a href="#false-dichotomy">False dichotomy</a></li>
 <li><a href="#32-hot-observable-types-%F0%9F%98%B2">32 hot Observable types? 😲</a></li>
-<li><a href="#sht-what-are-all-those-things-%F0%9F%98%90">sh*t, what are all those things?! 😐</a></li>
+<li><a href="#sht-what-are-all-those-things-%F0%9F%98%90">Sh*t, what are all those things?! 😐</a></li>
 <li><a href="#what-please-stop-%F0%9F%98%A5">What? Please, stop 😥</a></li>
 <li><a href="#first-things-first">First things first</a><ul>
 <li><a href="#fact-1-notification-types">Fact 1: Notification Types</a></li>
@@ -117,10 +117,10 @@
 <li><a href="#reset-on-ref-count-zero">reset on ref count zero</a></li>
 </ul>
 </li>
-<li><a href="#where-did-you-get-these-from">where did you get these from?</a></li>
+<li><a href="#where-did-you-get-these-from">Where did you get these from?</a></li>
 </ul>
 </li>
-<li><a href="#how-important-is-reading-the-source-code">how important is reading the source code?</a><ul>
+<li><a href="#how-important-is-reading-the-source-code">How important is reading the source code?</a><ul>
 <li><a href="#wow-hot-%F0%9F%94%A5-are-your-streams">Wow hot 🔥 are your streams?</a></li>
 <li><a href="#conclusion">Conclusion</a></li>
 </ul>
@@ -138,7 +138,7 @@
 </ul>
 <p><code>4*2*2*2 = 32</code></p>
 <p>If we&#39;d also take <strong>connectable streams</strong> into account (<a href="https://blog.thoughtram.io/angular/2016/06/16/cold-vs-hot-observables.html">as in <em>Understanding publish, refCount and connect</em></a>), there&#39;d be even more  😈.</p>
-<h2 id="sht-what-are-all-those-things-😐">sh*t, what are all those things?! 😐</h2>
+<h2 id="sht-what-are-all-those-things-😐">Sh*t, what are all those things?! 😐</h2>
 <p>These are separate characteristics of Subjects that have existed for a very long time already - and most probably you experienced them in some rather unclear circumstances, and haven&#39;t become aware of what&#39;s going on. For example, you might have noticed that, even though the <strong>reference counter</strong> (number of active subscribers) have <strong>dropped to zero</strong>, <code>share()</code> used to recreate the underlying stream (e.g. a new HTTP request) whenever a new active subscription happened. <strong>But after replacing the <code>share()</code> operator with <code>shareReplay()</code>, it didn&#39;t</strong>!. Even though the circumstances were the same... And this is NOT a specificity of either Subject or ReplaySubject. This is what so called &quot;hot&quot; is underneath. One term is just so wrong, if you want to get your head around it!</p>
 <h2 id="what-please-stop-😥">What? Please, stop 😥</h2>
 <p>No worries, by the end you&#39;d <strong>understand all of that</strong>. Stay with me. And I hope you&#39;d see that, indeed, &quot;hot and cold&quot; is a seriously harmful oversimplification.</p>
@@ -195,13 +195,13 @@ and all operators, subjects, etc - everything in Rx processes all of them. Somet
 <p><img src="http://ducin.it/images/blog-rxjs-subject-reaching-refcount-zero.svg" alt="RxJS Subject with refcount zero"></p>
 <p>And the question arises: <strong>if the <code>refCount</code> drops to zero</strong> (no active subscribers), <strong>should we keep the connection to the producer active</strong>? In other words - shall we keep the producer live?</p>
 <p>Remember, of the producer is live, it will keep on emitting items according to its nature (e.g. interval will keep on doing its job).</p>
-<h2 id="where-did-you-get-these-from">where did you get these from?</h2>
+<h2 id="where-did-you-get-these-from">Where did you get these from?</h2>
 <p>Now comes my favorite part 😁 - source code: let&#39;s dive into RxJS <code>ShareReplay</code> sources. This one is especially good to look at, add it specifies config parameters exposed by the <code>share</code> operator:</p>
 <p><img src="https://dev-to-uploads.s3.amazonaws.com/uploads/articles/vmfc85hkv6361kof4zyv.png" alt="RxJS source code of shareReplay"></p>
 <p><code>shareReplay</code> is just a specialized version of <code>share</code>. Apart from accepting config (as input parameters) and preparing the new config (to be passed to <code>share</code>) - apart from that, <code>shareReplay()</code> just calls <code>share()</code>.</p>
 <p><code>connector</code> is a function that returns a subject - with whatever type, potentially even having some subscribers already (not common, though possible).</p>
 <p>And the <code>resetOnError</code>, <code>resetOnComplete</code> and <code>resetOnCountZero</code> are things we&#39;ve already gone through 🙃All in all, we can determine all these.</p>
-<h1 id="how-important-is-reading-the-source-code">how important is reading the source code?</h1>
+<h1 id="how-important-is-reading-the-source-code">How important is reading the source code?</h1>
 <p>Sometimes not that much. But this time - extremely important! Imagine all these situations where you use <code>share()</code>/<code>shareReplay()</code> and you hope <em>it should be ok</em>. NO! Think about all these usecases, such as switching routes (navigation), potentially causing <code>refCount</code> zero for a short while. Or receiving <code>complete</code> which <em>might</em> unintentionally break your app logic.</p>
 <h2 id="wow-hot-🔥-are-your-streams">Wow hot 🔥 are your streams?</h2>
 <p>Being hot is about <strong>multicasting</strong> (sharing the connection with the producer or, in practice, <strong>sharing the producer</strong>). But I hope your agree with me that the following scenarios:</p>
