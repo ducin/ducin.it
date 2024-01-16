@@ -3824,7 +3824,7 @@
 	}
 
 	blockquote {
-		margin-bottom: 6em;
+		margin-bottom: 2em;
 	}
 
 	blockquote .author {
@@ -3844,6 +3844,10 @@
 
 	blockquote hidden {
 		display: none;
+	}
+
+	blockquote p {
+		margin: 1em 0 1em 0;
 	}
 
 	/* CSS filter based on: https://codepen.io/paulcham/pen/QKbpLb */
