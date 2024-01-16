@@ -158,7 +158,7 @@ And the `resetOnError`, `resetOnComplete` and `resetOnCountZero` are things we'v
 
 Sometimes not that much. But this time - extremely important! Imagine all these situations where you use `share()`/`shareReplay()` and you hope _it should be ok_. NO! Think about all these usecases, such as switching routes (navigation), potentially causing `refCount` zero for a short while. Or receiving `complete` which _might_ unintentionally break your app logic.
 
-## Wow hot 🔥 are your streams?
+## How hot 🔥 are your streams?
 
 Being hot is about **multicasting** (sharing the connection with the producer or, in practice, **sharing the producer**). But I hope your agree with me that the following scenarios:
 - sharing the same producer no matter what
