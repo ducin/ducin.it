@@ -3,6 +3,7 @@
 const fs = require('fs')
 const { loadPosts } = require('./load-posts')
 
+const { absoluteUrl } = require('./urls')
 const pages = loadPosts()
 const posts = require('../data/posts.json')
 
@@ -21,15 +22,13 @@ ${sitemapItems(items)}
 </urlset>
 `
 
-const baseURL = 'http://ducin.it'
-
 const priority = (name) => {
   return name === 'Home' ? '1.00' : '0.80'
 }
 
 const pageItems = Object.entries(pages)
   .map(([url, name]) => ({
-    loc: baseURL + url,
+    loc: absoluteUrl(url),
     changefreq: 'weekly',
     priority: priority(name)
   }))

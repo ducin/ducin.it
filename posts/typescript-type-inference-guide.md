@@ -11,13 +11,13 @@ After reading this post, you'll learn:
 
 <% TOC %>
 
-## motivation
+## Motivation
 
 **Type Inference is one of the most important features we should master, as we progress with using TypeScript**. TS is not only about the different types we can declare - and the problems they address. It's also about the style of our code - and how much will TS codebase differ from its direct JS output.
 
 One of the most useful resources when getting started with TypeScript is the [official handbook](https://www.typescriptlang.org/docs). However, it doesn't go too deep into [type inference](https://www.typescriptlang.org/docs/handbook/type-inference.html) and doesn't provide practical tips on how to leverage it, and so I decided to cover the topic. Anyway, you should definitely check out the handbook.
 
-## implicit vs explicit
+## Implicit vs Explicit
 
 Whenever we design a system or an API, there are lots of questions we should consider upfront. Some of the questions relate to the domain (the mechanics of the business we're working on), other ones just characterize our system and often can be represented by pairs of extremes. These include whether a service should be _centralized_ or _distributed_ (e.g. redux vs flux), whether the API should be _sync_ or _async_ (native Array methods vs [caolan/async](https://github.com/caolan/async)) and many, many more. In case of TypeScript, **we choose whether type definitions used throughout our codebase should be rather _implicit_ or _explicit_**:
 
@@ -38,13 +38,13 @@ const number = 3 // inferred as number (implicit)
 const numbers = [1,2,3] // inferred as number[] (implicit)
 ```
 
-## inference basics
+## Inference basics
 
 As I wrote, type inference is a powerful feature. If you're familiar with [C#, it's the `var` keyword](https://docs.microsoft.com/en-us/dotnet/csharp/language-reference/keywords/var). The idea is, basically, that **we keep the type safety of our codebase, but we declare types less. Less investment cost, same profit**.
 
 TypeScript applies type inference in following scenarios:
 
-#### variable type inference
+#### Variable type inference
 
 We declare a value and immediately assign a value to it:
 
@@ -86,7 +86,7 @@ The optional field (`?`) is required in above snippet, since there is a point in
 
 This will be important when be define the return type of `Array.prototype.reduce` later on.
 
-#### expression type inference
+#### Expression type inference
 
 Using any expression we've got in our program, other expressions and variables will calculate their type upon it:
 
@@ -97,7 +97,7 @@ const bandNameDraft = bandName // inferred as typeof bandName
 
 This can be applied multiple times within our codebase, thus creating a directed of expressions within our codebase. Cool and easy to use.
 
-#### function return type inference
+#### Runction return type inference
 
 Let's take a look at this tiny function:
 
@@ -115,7 +115,7 @@ TS infers that the return type of the function is a string, since ES6 template s
 (firstName: any, lastName: any) => string
 ```
 
-#### compiler flags
+#### Compiler Flags
 
 One of the bad practices TypeScript developers follow is ignoring the [`--noImplicitAny` and `--noImplicitThis` compiler flags](https://www.typescriptlang.org/docs/handbook/compiler-options.html) for TypeScript compiler:
 
@@ -124,11 +124,11 @@ One of the bad practices TypeScript developers follow is ignoring the [`--noImpl
 
 In both cases we open our codebase for bugs. Always remember to set these flags in `tsconfig.json`. It won't take you much time to declare the types (or help type inference work), but it'll surely save you from many painful moments!
 
-## limitations
+## Limitations
 
 It's important to highlight that there are limitations to this language feature. The three most significant ones are:
 
-#### function parameters are not inferred
+#### Function parameters are not inferred
 
 As we've seen in the last snippet above, **function parameters are never inferred. Never. Again, no exceptions. `any` is attached, if no explicit declaration.** This surely is a limitation, but if we wanted TS to infer what is the function parameter type, we'd have to go through all the places where the function is called and analyze the invocations. That's doable, of course, and we would get a list of types of all expressions passed as arguments to the function. But actually, the philosophy behind TypeScript is slightly different, more kind of _bottom-up_ approach. When we declare a function, we restrict how it can be used, so that all invocations are strictly checked if they're correct. We could say that when we type function parameters, we introduce a checkpoint.
 
@@ -142,7 +142,7 @@ So on one hand, no inference over function params is a different approach to sol
 
 Not a big effort, as you can see.
 
-#### external data sources are not inferred
+#### External data sources are not inferred
 
 ... because there's no way to do it! **External data sources include both asynchronous operations (websocket events, promises, async await, observables) and synchronous operations (e.g. reading JSON from a file)**. TypeScript controls all declarations and expresions within our codebase, but all external data is out of reach.
 
@@ -193,7 +193,7 @@ Additionally, an interesting question is if TypeScript is going to type check th
 
 And so the TypeScript team decided not to do that.
 
-#### functional composition is not inferred
+#### Functional composition is not inferred
 
 Finally, the limitation tht hits many FP-based implementations is that utility functions such as `compose` and `pipe` are not correctly typed out of the box. It's doable, however, it requires a hacky workaround.
 
@@ -237,7 +237,7 @@ export function pipe<T, A, B, C, D, E, F, G, H, I>(fn1: UnaryFunction<T, A>, fn2
 
 As said, it is a limitation, but **TypeScript libraries users don't suffer from it. Rather, TypeScript libraries/typedefs authors have to write it down. So the probability you'd fall into such situation is super small.**
 
-## example data structure
+## Example data structure
 
 In the following sections we'll use the following data. We've got a collection of music bands with their names and genres assigned:
 
@@ -275,7 +275,7 @@ const bands: Band[] = [{
 
 We'll see them in action in a while.
 
-## prototype-based chaining
+## Prototype-based chaining
 
 One of the super-useful features of TypeScript is the ability to apply the correct types in chained operations such as native `Array` methods or RxJS operators (until v5, where FP-based piping becomes the standard). The mechanics is pretty simple - given a well-defined structure and an operation which we know what it returns, we can perfectly determine what is the input of the next step.
 
@@ -323,7 +323,7 @@ const genres = unique(
 
 The power of TypeScript is that above code doesn't have any explicit type definitions at all (no `: string`), but everything is type-safe.
 
-## array.reduce and the accumulator type problem
+## `array.reduce`` and the accumulator type problem
 
 Let's carry on with Array methods, this time: `reduce`. Array reduce is special in a way that all other Higher-order functions can be implemented using it. In other words, reduce is the most general out of all HOFs on arrays. Reduce defines an iteration over a collection, where an accumulator (aggregate, whatever we call it) is passed between all steps. A single step of the loop is performing an operation of the item of the collection being iterated over, the aggregate is updated and returned to the next step. So the aggregate is passed through all the steps.
 
@@ -394,7 +394,7 @@ const genreMap = bands.reduce((aggr: GenreMap, band: Band): GenreMap => {
 
 As you can see, I've placed the type in three places, but that's not necessary (the bottom line would be enough). At the end of the article we'll cover how man places shall we _hammer_ with explicit types and which ones are good to left inferred automatically.
 
-## flexibility
+## Flexibility
 
 One of the strongest points against TypeScript, stated by JavaScript developers, is that _"writing types down take time"_. Well, sure it does, JavaScript doesn't support static typing so that this **is** some extra cost. Whenever we choose to use TypeScript or not, we have to take into account that **software changes over time and the code that we just wrote will be different after few months or few years. And the benefits of TypeScript is not necessarily for today me, but for all the people who would work on my code**, including me after six months ;) ([who wrote this crap?](https://www.improgrammer.net/wp-content/uploads/2017/09/Who-wrote-this-crap-code.png)). So TypeScript is an investment in easier reasoning about the code in future.
 
@@ -405,7 +405,7 @@ Anyway, **when making good use of type inference we can singnificantly limit the
 
 Basically, we reduce the cost. But we should also track these critical places, which we type explicitly. That's because, if anything important changes in our project (like a domain object structure change), we should also manually update any places we use it. TypeScript will find all the errors for us, but that's something we shouldn't necessarily leave for type inference. **Too much type inference makes too much types change, potentially, leaving us unaware of that.** If a compilation error appears, we'd have a longer path to follow until we find what should get updated.
 
-## type inference best practices
+## Type inference - Best Practices
 
 Good candidates for explicit typing are:
 
@@ -413,7 +413,7 @@ Good candidates for explicit typing are:
 - **Data structures**. We are supposed to declare as many `type`s and `interface`s as our domain requires. Often, this can be automated in a _Contract-First Design approach_. Functions and objects that rely on the data structures should be full of data structures typedefs.
 - **Function parameters and, initially, function return types**. Function parameter types has to be typed explicitly (since TS doesn't do that). **Function return explicit types are a mean to check if my implementation matches my intention**. Depending on the complexity of a function, you can leave the return type or remove it (e.g. if it's an obvious one-liner).
 
-## summary
+## Summary
 
 The key points you should remember are:
 

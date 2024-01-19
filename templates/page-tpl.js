@@ -5,7 +5,7 @@ const { menuTpl } = require('./menu-tpl')
 const pageTpl = ({
 	head: { title, author, keywords, description, thumbnailURL, canonicalURL, shortcutIconURL },
 	tags: { og, twitter },
-	body: { topLink, topTitle, content },
+	body: { topLink, topTitle, content, bottomContent },
 	files: { css = [], js = [] } = [],
 }) => {
 	const jsFiles = new Set([
@@ -22,7 +22,7 @@ const pageTpl = ({
 
 	const cssFiles = new Set([
 		'assets/css/main.css',
-		'https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.13.1/styles/solarized-light.min.css'
+		'https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/github-dark.min.css'
 	])
 	css.forEach((file) => cssFiles.add(file))
 
@@ -41,6 +41,11 @@ const pageTpl = ({
 		<link rel="shortcut icon" href="${shortcutIconURL}">
 		<meta name="viewport" content="width=device-width, initial-scale=1" />
 		${[...cssFiles].map((file) => `<link rel="stylesheet" href="${file}" />`).join('\n')}
+		<style>
+		  #main > header {
+			background: url("${thumbnailURL}") !important
+		  }
+		</style>
 		${Object.entries(twitter).map(([name, content]) => `<meta name="${name}" content="${content}" />`).join('\n')}
 		${Object.entries(og).map(([name, content]) => `<meta property="${name}" content="${content}" />`).join('\n')}
 	</head>
@@ -68,6 +73,7 @@ const pageTpl = ({
 					<div class="inner">
 					${content}
 					</div>
+					${bottomContent ? `<hr />` + bottomContent : ''}
 				</section>
 			</article>
 		${footerTpl()}

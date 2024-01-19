@@ -1,13 +1,19 @@
 const { z } = require("zod");
 
 const Post = z.object({
+  sourceFile: z.string(),
   title: z.string(),
   keywords: z.array(z.string()),
   description: z.string(),
   publishedDate: z.string(),
-  sourceFile: z.string(),
-  thumbnailFile: z.string(),
   readingTime: z.string(),
+  coverImage: z.object({
+    URL: z.string(),
+    title: z.string(),
+    authorURL: z.string(),
+    author: z.string(),
+  }),
+  coverImageFilename: z.string(),
 });
 
 const loadPosts = () => {

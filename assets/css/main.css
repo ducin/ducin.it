@@ -1,5 +1,5 @@
 @import url(font-awesome.min.css);
-@import url("https://fonts.googleapis.com/css?family=Open+Sans:400,400italic,600,600italic,800,800italic");
+@import url("https://fonts.googleapis.com/css?family=Open+Sans:400,400italic,600,600italic,700,700italic");
 
 /*
 	Spectral by HTML5 UP
@@ -1418,16 +1418,16 @@
 	body, input, select, textarea {
 		color: #fff;
 		font-family: "Open Sans", Helvetica, sans-serif;
-		font-size: 15pt;
+		font-size: 16pt;
 		font-weight: 400;
-		letter-spacing: 0.075em;
+		/* letter-spacing: 0.025em; */
 		line-height: 1.65em;
 	}
 
 		@media screen and (max-width: 1680px) {
 
 			body, input, select, textarea {
-				font-size: 13pt;
+				font-size: 14pt;
 			}
 
 		}
@@ -1435,7 +1435,7 @@
 		@media screen and (max-width: 1280px) {
 
 			body, input, select, textarea {
-				font-size: 12pt;
+				font-size: 13pt;
 			}
 
 		}
@@ -1443,7 +1443,7 @@
 		@media screen and (max-width: 736px) {
 
 			body, input, select, textarea {
-				font-size: 11pt;
+				font-size: 12pt;
 				letter-spacing: 0.0375em;
 			}
 
@@ -1478,11 +1478,11 @@
 
 	h1, h2, h3, h4, h5, h6 {
 		color: #fff;
-		font-weight: 800;
-		letter-spacing: 0.225em;
+		font-weight: 700;
 		line-height: 1em;
 		margin: 0 0 1em 0;
-		text-transform: uppercase;
+		/* letter-spacing: 0.1em; */
+		/* text-transform: capitalize; */
 	}
 
 		h1 a, h2 a, h3 a, h4 a, h5 a, h6 a {
@@ -1491,45 +1491,45 @@
 		}
 
 	h2 {
-		font-size: 1.35em;
+		font-size: 1.45em;
 		line-height: 1.75em;
 	}
 
 		@media screen and (max-width: 736px) {
 
 			h2 {
-				font-size: 1.1em;
+				font-size: 1.2em;
 				line-height: 1.65em;
 			}
 
 		}
 
 	h3 {
-		font-size: 1.15em;
+		font-size: 1.25em;
 		line-height: 1.75em;
 	}
 
 		@media screen and (max-width: 736px) {
 
 			h3 {
-				font-size: 1em;
+				font-size: 1.1em;
 				line-height: 1.65em;
 			}
 
 		}
 
 	h4 {
-		font-size: 1em;
+		font-size: 1.1em;
 		line-height: 1.5em;
 	}
 
 	h5 {
-		font-size: 0.8em;
+		font-size: 0.9em;
 		line-height: 1.5em;
 	}
 
 	h6 {
-		font-size: 0.7em;
+		font-size: 0.8em;
 		line-height: 1.5em;
 	}
 
@@ -1997,8 +1997,12 @@
 
 	ul {
 		list-style: disc;
-		margin: 0.5em 0 0.5em 0;
+		margin: 0.5em 0 2em 0;
 		padding-left: 1em;
+	}
+
+	ul ul {
+		margin: 0;
 	}
 
 		ul li {
@@ -3651,8 +3655,9 @@
 	}
 
 		#main > header h2 {
-			font-size: 1.75em;
+			font-size: 2.5em;
 			margin: 0 0 0.5em 0;
+			text-shadow: 4px 4px #000;
 		}
 
 		#main > header p {

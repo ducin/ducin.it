@@ -17,8 +17,8 @@
 }
 
 .blogposts .blogpost-title {
-  font-weight: 800;
-  letter-spacing: 0.225em;
+  font-weight: 700;
+  letter-spacing: 0.03em;
   line-height: 1.5em;
   margin: 0 0 1em 0;
   text-decoration: underline;
@@ -27,18 +27,6 @@
 h1 code, h2 code, h3 code, h4 code, h5 code, h6 code {
   color: inherit;
   text-transform: none;
-}
-
-#main > header.post-antipatterns {
-  background: url("../../images/broken-plate.jpg") !important
-}
-
-#main > header.post-type-inference {
-  background: url("../../images/cover-metal-construction.jpg") !important
-}
-
-#main > header.post-no-hot-observables {
-  background: url("../../images/cover-red-and-blue.png") !important
 }
 
 article img {
