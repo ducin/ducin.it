@@ -1,8 +1,9 @@
 #!/usr/bin/env node
 
 const fs = require('fs')
+const { loadPosts } = require('./load-posts')
 
-const pages = require('../data/pages.json')
+const pages = loadPosts()
 const posts = require('../data/posts.json')
 
 const sitemapItem = (data) => `<url>\n${Object.entries(data)

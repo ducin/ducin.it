@@ -1,9 +1,6 @@
-const { listFiles } = require('../scripts/utils')
-const { pageTpl } = require('./page-tpl')
-
-listFiles('posts')
-  .filter(f => f.match(/.*\.(md)/ig))
-  .map(f => f.substr(0, f.length - 3))
+const fs = require('fs')
+const path = require('path')
+const { pageTpl } = require('../templates/page-tpl')
 
 fs.writeFileSync('./videos.htm', pageTpl({
   head: {

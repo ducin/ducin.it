@@ -7,12 +7,14 @@
     "gen": "npm run gen:feed && npm run gen:sitemap && npm run gen:posts"
   },
   "devDependencies": {
-    "browserify": "^14.5.0"
+    "browserify": "^17.0.0"
   },
   "dependencies": {
     "feed": "^2.0.2",
     "markdown-toc": "^1.2.0",
     "marked": "^0.6.0",
-    "sitemap": "^2.1.0"
+    "prettier": "^3.2.4",
+    "sitemap": "^2.1.0",
+    "zod": "^3.22.4"
   }
 }
