@@ -52,7 +52,7 @@ const generatePostHTML = async (post) => {
       keywords: keywords.join(', '),
       description: description,
       thumbnailURL: `${imageURL(coverImageFilename)}`,
-      canonicalURL: 'UNKNOWN CANONICAL URL',
+      canonicalURL: absoluteUrl(`${sourceFile}`),
       shortcutIconURL: 'images/td-logo-zolte-80.png',
     },
     tags: {
