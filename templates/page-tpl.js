@@ -53,7 +53,7 @@ const pageTpl = ({
 	${gtmTpl()}
 		<div id="page-wrapper">
 			<header id="header">
-				<h1><a href="/">${topLink}</a></h1>
+				<h1><a href="https://ducin.dev">${topLink}</a></h1>
 				<nav id="nav">
 					<ul>
 						<li class="special">
